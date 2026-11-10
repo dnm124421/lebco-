@@ -35,7 +35,17 @@ export function Footer() {
         <div>
           <h2 className="text-sm font-semibold uppercase tracking-wide text-primary-foreground/70">Contact</h2>
           <ul className="mt-4 space-y-3 text-sm text-primary-foreground/85">
-            <li className="flex gap-3"><Phone aria-hidden="true" className="mt-0.5 size-4 shrink-0" /><a href={businessInfo.phoneHref} className="hover:text-primary-foreground">{businessInfo.phone}</a></li>
+            <li className="flex gap-3">
+              <Phone aria-hidden="true" className="mt-0.5 size-4 shrink-0" />
+              <div className="flex flex-col">
+                <a href={businessInfo.secondaryPhoneHref} className="hover:text-primary-foreground">
+                  {businessInfo.secondaryPhone}
+                </a>
+                <a href={businessInfo.phoneHref} className="hover:text-primary-foreground">
+                  {businessInfo.phone}
+                </a>
+              </div>
+            </li>
             <li className="flex gap-3"><MessageCircle aria-hidden="true" className="mt-0.5 size-4 shrink-0" /><a href={whatsappHref()} target="_blank" rel="noreferrer" className="hover:text-primary-foreground">{businessInfo.whatsapp}</a></li>
             <li className="flex gap-3"><Mail aria-hidden="true" className="mt-0.5 size-4 shrink-0" /><a href={businessInfo.emailHref} className="break-all hover:text-primary-foreground">{businessInfo.email}</a></li>
             <li className="flex gap-3"><MapPin aria-hidden="true" className="mt-0.5 size-4 shrink-0" /><span>{businessInfo.footerAddress}</span></li>

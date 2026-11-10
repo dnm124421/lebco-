@@ -7,7 +7,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import { FloatingWhatsapp } from "@/components/site/FloatingWhatsapp";
 import { Footer } from "@/components/site/Footer";
@@ -117,15 +117,74 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+function ScrollProgress() {
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / (height || 1)) * 100;
+      setWidth(Math.min(100, Math.max(0, scrolled)));
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return <div id="scroll-progress" style={{ width: `${width}%` }} />;
+}
+
+function BackToTop() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setVisible(window.scrollY > 400);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <button
+      id="back-to-top"
+      type="button"
+      aria-label="Back to top"
+      className={`fixed bottom-20 right-5 z-40 flex size-10 items-center justify-center rounded-full border border-border bg-card/90 text-foreground shadow-md backdrop-blur-sm transition-all hover:bg-accent hover:text-accent-foreground hover:scale-105 active:scale-95 ${
+        visible ? "visible" : ""
+      }`}
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="m18 15-6-6-6 6" />
+      </svg>
+    </button>
+  );
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ScrollProgress />
       <Navbar />
       <Outlet />
       <Footer />
       <FloatingWhatsapp />
+      <BackToTop />
     </QueryClientProvider>
   );
 }

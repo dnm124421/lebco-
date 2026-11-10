@@ -29,8 +29,22 @@ export function ProductDetail({ product }: { product: Product }) {
     <main>
       <section className="border-b border-border bg-catalogue-panel">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8 lg:py-16">
-          <div className="overflow-hidden rounded-lg border border-border bg-card shadow-catalogue-sm">
-            <img src={product.image} alt={`${product.name} product placeholder`} className="aspect-[4/3] w-full object-cover" />
+          <div className="space-y-4">
+            <div className="overflow-hidden rounded-lg border border-border bg-card shadow-catalogue-sm">
+              <img src={product.image} alt={product.name} className="aspect-[4/3] w-full object-cover" />
+            </div>
+            {product.gallery && product.gallery.length > 0 ? (
+              <div className="grid grid-cols-2 gap-3">
+                {product.gallery.map((item) => (
+                  <div key={item.src} className="overflow-hidden rounded-md border border-border bg-card">
+                    <img src={item.src} alt={item.alt} className="aspect-[4/3] w-full object-cover" />
+                    {item.caption ? (
+                      <p className="p-2 text-center text-xs font-semibold text-foreground">{item.caption}</p>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            ) : null}
           </div>
           <div className="flex flex-col justify-center">
             <p className="text-sm font-semibold uppercase tracking-wide text-accent-strong">LEBCO Product Catalogue</p>

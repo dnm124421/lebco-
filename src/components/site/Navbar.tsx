@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, MessageCircle, X } from "lucide-react";
 import { useState } from "react";
 
+import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import { businessInfo, whatsappHref } from "@/data/products";
 
@@ -19,8 +20,7 @@ export function Navbar() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background" onClick={() => setOpen(false)}>
-          <span className="flex size-10 items-center justify-center rounded-md bg-primary text-base font-bold text-primary-foreground">L</span>
-          <span className="text-xl font-bold tracking-normal text-foreground">{businessInfo.company}</span>
+          <img src={logo} alt="LEBCO Logo" className="h-12 w-auto" />
         </Link>
 
         <nav aria-label="Main navigation" className="hidden items-center gap-7 lg:flex">
@@ -46,17 +46,27 @@ export function Navbar() {
           </Button>
         </div>
 
-        <Button
-          type="button"
-          variant="outline"
-          size="icon"
-          className="lg:hidden"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((value) => !value)}
-        >
-          {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
-        </Button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <a
+            href={whatsappHref()}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex size-9 items-center justify-center rounded-md bg-[#25D366] text-white shadow-sm hover:opacity-90 active:scale-95 transition"
+            aria-label="WhatsApp LEBCO"
+          >
+            <MessageCircle className="size-5" />
+          </a>
+          <Button
+            type="button"
+            variant="outline"
+            size="icon"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((value) => !value)}
+          >
+            {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+          </Button>
+        </div>
       </div>
 
       {open ? (

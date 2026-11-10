@@ -1,5 +1,5 @@
 # TanStack Start builds through Nitro, which auto-detects Netlify and emits
 # static assets to `dist/` and the SSR function to `.netlify/functions-internal`.
 [build]
-  command = "bun run build"
+  command = "npm run build"
   publish = "dist"

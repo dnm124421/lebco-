@@ -42,8 +42,27 @@ function ContactPage() {
 
       <section className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[0.42fr_0.58fr] lg:px-8 lg:py-16">
         <div className="space-y-4">
+          <section className="rounded-lg border border-border bg-card p-5 shadow-catalogue-sm">
+            <div className="flex gap-3">
+              <Phone aria-hidden="true" className="mt-1 size-5 shrink-0 text-accent-strong" />
+              <div>
+                <h2 className="font-semibold text-foreground">Phone</h2>
+                <a
+                  href={businessInfo.secondaryPhoneHref}
+                  className="mt-1 block break-words text-muted-foreground transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  {businessInfo.secondaryPhone}
+                </a>
+                <a
+                  href={businessInfo.phoneHref}
+                  className="mt-1 block break-words text-muted-foreground transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  {businessInfo.phone}
+                </a>
+              </div>
+            </div>
+          </section>
           {[
-            { icon: Phone, label: "Phone", value: businessInfo.phone, href: businessInfo.phoneHref },
             { icon: MessageCircle, label: "WhatsApp", value: businessInfo.whatsapp, href: whatsappHref(), external: true },
             { icon: Mail, label: "Email", value: businessInfo.email, href: businessInfo.emailHref },
             { icon: MapPin, label: "Address", value: businessInfo.address },
