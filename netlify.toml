@@ -3,3 +3,21 @@
 [build]
   command = "npm run build"
   publish = "dist"
+
+[[redirects]]
+  from = "/products/model-202"
+  to = "/products"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products/bed-fitting"
+  to = "/products"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products/table-bracket"
+  to = "/products"
+  status = 301
+  force = true

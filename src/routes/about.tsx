@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Bed, Boxes, CheckCircle, LayoutGrid, Ruler, Wrench } from "lucide-react";
+import { Bed, Boxes, LayoutGrid } from "lucide-react";
 
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Learn about LEBCO, supplier of modular kitchen storage, drawer systems, bed fittings and furniture hardware. Quality hardware backed by up to 10 years warranty.",
+          "Learn about LEBCO, offering hinges, drawer systems, kitchen storage fittings and anti-skid drawer mats for modern interiors.",
       },
       { property: "og:title", content: "About LEBCO | Kitchen & Furniture Hardware" },
       { property: "og:type", content: "website" },
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/about")({
       {
         property: "og:description",
         content:
-          "Learn about LEBCO, supplier of modular kitchen storage, drawer systems, bed fittings and furniture hardware. Quality hardware backed by up to 10 years warranty.",
+          "Learn about LEBCO, offering hinges, drawer systems, kitchen storage fittings and anti-skid drawer mats for modern interiors.",
       },
     ],
   }),
@@ -44,7 +44,7 @@ function AboutPage() {
         <div className="grid gap-10 lg:grid-cols-[0.7fr_0.3fr]">
           <div className="space-y-6 text-base leading-8 text-muted-foreground">
             <p>
-              LEBCO supplies hardware for modular kitchens, wardrobes and furniture. Our range includes telescopic drawer channels, slim tandem boxes, tall pantry units, universal magic corners, PVC wicker baskets, lift-up bed fittings, folding table brackets, and cabinet hinges. Products are backed by warranties ranging from 5 years to 10 years (lifetime on bed fitting mechanisms).
+              LEBCO offers hinges, drawer systems (tandem box and telescopic channel), kitchen storage fittings (bottle pullouts, pantry units, corner units, baskets, cutlery trays, thali stands and rolling shutters) and anti-skid drawer mats.
             </p>
             <p>
               The product catalogue provides trade-accurate dimensions, weight ratings, finishes, and carton packing quantities to help modular kitchen manufacturers, carpenters, and interior designers specify the right hardware with confidence.
@@ -62,22 +62,17 @@ function AboutPage() {
                 {
                   icon: Boxes,
                   title: "Modular kitchens",
-                  desc: "Tandem boxes, pantry units, magic corners, wicker baskets, cutlery trays, thali stands",
+                  desc: "Tandem boxes, pantry units, magic corners, wicker baskets, cutlery trays, thali stands and rolling shutters",
                 },
                 {
                   icon: Bed,
-                  title: "Wardrobes & bedroom furniture",
-                  desc: "Lift-up bed fittings, telescopic channels",
-                },
-                {
-                  icon: Ruler,
-                  title: "Wall-mounted tables & shelves",
-                  desc: "Folding table brackets",
+                  title: "Wardrobes and bedroom furniture",
+                  desc: "Cabinet hinges and telescopic channels",
                 },
                 {
                   icon: LayoutGrid,
-                  title: "Drawer & cabinet organisation",
-                  desc: "Anti-skid mats, cutlery trays, plate stands",
+                  title: "Drawer and cabinet organisation",
+                  desc: "Anti-skid mats, cutlery trays and plate stands",
                 },
               ].map((item) => (
                 <li key={item.title} className="flex gap-3">

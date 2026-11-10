@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { ShieldCheck } from "lucide-react";
 
 import { ProductGrid } from "@/components/site/ProductGrid";
 import { SectionHeader } from "@/components/site/SectionHeader";
@@ -8,23 +7,10 @@ import { products, type ProductCategory } from "@/data/products";
 
 const categories: ("All" | ProductCategory)[] = [
   "All",
-  "Drawer Systems",
   "Hinges",
+  "Drawer Systems",
   "Kitchen Storage",
-  "Furniture Fittings",
   "Accessories",
-];
-
-const warrantyList = [
-  { product: "Telescopic Channels", warranty: "10 Years Warranty", category: "Drawer Systems" },
-  { product: "Slim Tandem Box", warranty: "5 Years Warranty", category: "Drawer Systems" },
-  { product: "Tall Pantry Unit", warranty: "5 Years Warranty", category: "Kitchen Storage" },
-  { product: "Universal Magic Corner", warranty: "5 Years Warranty", category: "Kitchen Storage" },
-  { product: "Bottle Pullout", warranty: "5 Years Warranty", category: "Kitchen Storage" },
-  { product: "PVC Wicker Basket", warranty: "5 Years Warranty", category: "Kitchen Storage" },
-  { product: "Folding Table Bracket", warranty: "5 Years Warranty", category: "Furniture Fittings" },
-  { product: "PVC Cutlery Tray", warranty: "5 Years Warranty", category: "Kitchen Storage" },
-  { product: "Lift-up Bed Fitting", warranty: "Lifetime Warranty", category: "Furniture Fittings" },
 ];
 
 export const Route = createFileRoute("/products/")({
@@ -34,7 +20,7 @@ export const Route = createFileRoute("/products/")({
       {
         name: "description",
         content:
-          "Browse LEBCO's full hardware catalogue: telescopic channels, tandem boxes, pantry units, magic corners, wicker baskets, bed fittings, table brackets and hinges.",
+          "Browse LEBCO's full hardware catalogue: hinges, telescopic channels, tandem boxes, cutlery trays, pullouts, pantry units, magic corners, rolling shutters and drawer mats.",
       },
       { property: "og:title", content: "Hardware Products Catalogue | LEBCO" },
       { property: "og:type", content: "website" },
@@ -42,7 +28,7 @@ export const Route = createFileRoute("/products/")({
       {
         property: "og:description",
         content:
-          "Browse LEBCO's full hardware catalogue: telescopic channels, tandem boxes, pantry units, magic corners, wicker baskets, bed fittings, table brackets and hinges.",
+          "Browse LEBCO's full hardware catalogue: hinges, telescopic channels, tandem boxes, cutlery trays, pullouts, pantry units, magic corners, rolling shutters and drawer mats.",
       },
     ],
   }),
@@ -51,6 +37,32 @@ export const Route = createFileRoute("/products/")({
 
 function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState<"All" | ProductCategory>("All");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const catParam = params.get("category");
+      const storedCat = sessionStorage.getItem("lebco_active_category");
+      const initialCat = (catParam || storedCat) as "All" | ProductCategory | null;
+      if (initialCat && categories.includes(initialCat)) {
+        setActiveCategory(initialCat);
+      }
+    }
+  }, []);
+
+  const handleSelectCategory = (cat: "All" | ProductCategory) => {
+    setActiveCategory(cat);
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("lebco_active_category", cat);
+      const url = new URL(window.location.href);
+      if (cat === "All") {
+        url.searchParams.delete("category");
+      } else {
+        url.searchParams.set("category", cat);
+      }
+      window.history.replaceState({}, "", url.toString());
+    }
+  };
 
   const filteredProducts =
     activeCategory === "All"
@@ -64,7 +76,7 @@ function ProductsPage() {
           <SectionHeader
             eyebrow="LEBCO Catalogue"
             title="Our Product Range"
-            description="Explore LEBCO's range of practical hardware solutions. Select any product to view details and specifications."
+            description="Specifications, sizes and colours for every LEBCO product. Select a product for full details."
           />
         </div>
       </section>
@@ -78,7 +90,7 @@ function ProductsPage() {
               <button
                 key={cat}
                 type="button"
-                onClick={() => setActiveCategory(cat)}
+                onClick={() => handleSelectCategory(cat)}
                 className={`cursor-pointer rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                   isActive
                     ? "bg-accent text-accent-foreground shadow-sm"
@@ -92,55 +104,8 @@ function ProductsPage() {
         </div>
 
         {/* Product Grid */}
-        <div className="mt-6">
+        <div className="mt-6 pb-12">
           <ProductGrid products={filteredProducts} />
-        </div>
-      </section>
-
-      {/* Warranty at a Glance */}
-      <section className="border-t border-border bg-catalogue-panel py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-6 flex items-center gap-2">
-            <ShieldCheck className="size-6 text-accent-strong" />
-            <h2 className="text-2xl font-semibold text-foreground">Warranty at a Glance</h2>
-          </div>
-          <p className="mb-6 max-w-2xl text-sm text-muted-foreground">
-            LEBCO hardware products are tested for long-lasting durability. Overview of manufacturer warranty periods across our product lineup:
-          </p>
-
-          <div className="overflow-hidden rounded-lg border border-border bg-card shadow-catalogue-sm">
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[32rem] border-collapse text-left text-sm">
-                <thead>
-                  <tr className="border-b border-border bg-muted">
-                    <th scope="col" className="px-5 py-3.5 font-semibold text-foreground">
-                      Product Name
-                    </th>
-                    <th scope="col" className="px-5 py-3.5 font-semibold text-foreground">
-                      Category
-                    </th>
-                    <th scope="col" className="px-5 py-3.5 font-semibold text-foreground">
-                      Warranty Period
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {warrantyList.map((item, idx) => (
-                    <tr
-                      key={item.product}
-                      className={`border-b border-border last:border-b-0 ${
-                        idx % 2 === 1 ? "bg-muted/30" : ""
-                      }`}
-                    >
-                      <td className="px-5 py-3.5 font-medium text-foreground">{item.product}</td>
-                      <td className="px-5 py-3.5 text-muted-foreground">{item.category}</td>
-                      <td className="px-5 py-3.5 font-medium text-accent-strong">{item.warranty}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
         </div>
       </section>
     </main>
