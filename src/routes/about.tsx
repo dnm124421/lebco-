@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Boxes, CheckCircle, Ruler, Wrench } from "lucide-react";
+import { Bed, Boxes, CheckCircle, LayoutGrid, Ruler, Wrench } from "lucide-react";
 
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { Button } from "@/components/ui/button";
@@ -8,18 +8,19 @@ import { businessInfo } from "@/data/products";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us — LEBCO" },
+      { title: "About LEBCO | Kitchen & Furniture Hardware" },
       {
         name: "description",
         content:
-          "Learn about LEBCO, a hardware business offering products for modular kitchens, furniture and utility applications.",
+          "Learn about LEBCO, supplier of modular kitchen storage, drawer systems, bed fittings and furniture hardware. Quality hardware backed by up to 10 years warranty.",
       },
-      { property: "og:title", content: "About Us — LEBCO" },
+      { property: "og:title", content: "About LEBCO | Kitchen & Furniture Hardware" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       {
         property: "og:description",
-        content: "LEBCO provides practical hardware solutions for kitchens, furniture and everyday utility applications.",
+        content:
+          "Learn about LEBCO, supplier of modular kitchen storage, drawer systems, bed fittings and furniture hardware. Quality hardware backed by up to 10 years warranty.",
       },
     ],
   }),
@@ -34,7 +35,7 @@ function AboutPage() {
           <SectionHeader
             eyebrow="About LEBCO"
             title="Hardware Solutions for Modern Spaces"
-            description="LEBCO provides practical hardware solutions for kitchens, furniture and everyday utility applications."
+            description="LEBCO supplies practical hardware solutions for kitchens, wardrobes, furniture and utility applications."
           />
         </div>
       </section>
@@ -43,27 +44,48 @@ function AboutPage() {
         <div className="grid gap-10 lg:grid-cols-[0.7fr_0.3fr]">
           <div className="space-y-6 text-base leading-8 text-muted-foreground">
             <p>
-              LEBCO focuses on hardware products used in modular kitchens, furniture fittings and utility spaces. The catalogue includes kitchen storage fittings, drawer accessories, corner solutions, baskets, bed fittings and table brackets.
+              LEBCO supplies hardware for modular kitchens, wardrobes and furniture. Our range includes telescopic drawer channels, slim tandem boxes, tall pantry units, universal magic corners, PVC wicker baskets, lift-up bed fittings, folding table brackets, and cabinet hinges. Products are backed by warranties ranging from 5 years to 10 years (lifetime on bed fitting mechanisms).
             </p>
             <p>
-              The product range is presented clearly so customers can review available specifications and contact LEBCO for product enquiries through WhatsApp, phone or email.
+              The product catalogue provides trade-accurate dimensions, weight ratings, finishes, and carton packing quantities to help modular kitchen manufacturers, carpenters, and interior designers specify the right hardware with confidence.
             </p>
-            <Button asChild>
-              <Link to="/products">Explore Products</Link>
-            </Button>
+            <div className="pt-2">
+              <Button asChild>
+                <Link to="/products">Explore Complete Catalogue</Link>
+              </Button>
+            </div>
           </div>
           <aside className="rounded-lg border border-border bg-card p-5 shadow-catalogue-sm">
             <h2 className="text-lg font-semibold text-foreground">Applications</h2>
-            <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
+            <ul className="mt-4 space-y-4 text-sm text-muted-foreground">
               {[
-                { icon: Boxes, text: "Modular kitchen storage" },
-                { icon: Wrench, text: "Furniture hardware" },
-                { icon: Ruler, text: "Utility fittings" },
-                { icon: CheckCircle, text: "Everyday practical use" },
+                {
+                  icon: Boxes,
+                  title: "Modular kitchens",
+                  desc: "Tandem boxes, pantry units, magic corners, wicker baskets, cutlery trays, thali stands",
+                },
+                {
+                  icon: Bed,
+                  title: "Wardrobes & bedroom furniture",
+                  desc: "Lift-up bed fittings, telescopic channels",
+                },
+                {
+                  icon: Ruler,
+                  title: "Wall-mounted tables & shelves",
+                  desc: "Folding table brackets",
+                },
+                {
+                  icon: LayoutGrid,
+                  title: "Drawer & cabinet organisation",
+                  desc: "Anti-skid mats, cutlery trays, plate stands",
+                },
               ].map((item) => (
-                <li key={item.text} className="flex gap-3">
-                  <item.icon aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-accent-strong" />
-                  <span>{item.text}</span>
+                <li key={item.title} className="flex gap-3">
+                  <item.icon aria-hidden="true" className="mt-1 size-4 shrink-0 text-accent-strong" />
+                  <div>
+                    <span className="font-medium text-foreground">{item.title}:</span>{" "}
+                    <span>{item.desc}</span>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -75,7 +97,7 @@ function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="rounded-lg border border-border bg-card p-6 shadow-catalogue-sm">
             <h2 className="text-xl font-semibold text-foreground">Contact LEBCO</h2>
-            <p className="mt-3 text-muted-foreground">Phone: {businessInfo.phone}</p>
+            <p className="mt-3 text-muted-foreground">Phone: {businessInfo.phone} / {businessInfo.secondaryPhone}</p>
             <p className="mt-2 text-muted-foreground">WhatsApp: {businessInfo.whatsapp}</p>
             <p className="mt-2 break-all text-muted-foreground">Email: {businessInfo.email}</p>
           </div>

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Boxes, CheckCircle, MessageCircle, ShieldCheck, Wrench } from "lucide-react";
+import { ArrowRight, Boxes, CheckCircle, MessageCircle, Package, RotateCcw, ShieldCheck, Sparkles } from "lucide-react";
 
 import { ProductGrid } from "@/components/site/ProductGrid";
 import { SectionHeader } from "@/components/site/SectionHeader";
@@ -9,19 +9,19 @@ import { businessInfo, featuredProducts, heroImage, products, whatsappHref } fro
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "LEBCO — Hardware Products for Kitchens, Furniture and Utility Use" },
+      { title: "LEBCO Hardware | Modular Kitchen & Furniture Fittings" },
       {
         name: "description",
         content:
-          "Explore LEBCO hardware products for modular kitchens, furniture and utility applications. Enquire by WhatsApp, phone or email.",
+          "Explore LEBCO's range of telescopic channels, tandem boxes, pantry units, magic corners, wicker baskets, bed fittings and hinges. Direct enquiry via WhatsApp.",
       },
-      { property: "og:title", content: "LEBCO — Hardware Products for Kitchens, Furniture and Utility Use" },
+      { property: "og:title", content: "LEBCO Hardware | Modular Kitchen & Furniture Fittings" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       {
         property: "og:description",
         content:
-          "Explore LEBCO hardware products for modular kitchens, furniture and utility applications.",
+          "Explore LEBCO's range of telescopic channels, tandem boxes, pantry units, magic corners, wicker baskets, bed fittings and hinges. Direct enquiry via WhatsApp.",
       },
     ],
   }),
@@ -39,7 +39,7 @@ function Index() {
               Quality Hardware. Built for Everyday Use.
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">
-              Explore our range of kitchen, furniture and utility hardware solutions designed for practical and durable use.
+              Hardware products for modular kitchens, wardrobes and furniture. Backed by manufacturer warranties and verified catalogue specifications.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg">
@@ -56,20 +56,31 @@ function Index() {
             <img src={heroImage} alt="LEBCO hardware product catalogue display" className="aspect-[4/3] w-full object-cover" />
           </div>
         </div>
-      </section>
 
-      <section className="border-b border-border bg-catalogue-panel">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-[0.8fr_0.2fr] lg:px-8">
-          <div>
-            <SectionHeader
-              title="Hardware Solutions for Modern Spaces"
-              description="LEBCO provides practical hardware solutions for kitchens, furniture and everyday utility applications."
-            />
-          </div>
-          <div className="flex items-start lg:justify-end">
-            <Button asChild variant="outline">
-              <Link to="/products">Explore Products</Link>
-            </Button>
+        {/* Hero Badges */}
+        <div className="border-t border-border bg-catalogue-panel py-6">
+          <div className="mx-auto grid max-w-7xl gap-6 px-4 sm:grid-cols-3 sm:px-6 lg:px-8">
+            <div className="flex items-start gap-3.5">
+              <ShieldCheck className="mt-0.5 size-6 shrink-0 text-accent-strong" />
+              <div>
+                <h3 className="font-semibold text-foreground">Up to 10 Years Warranty</h3>
+                <p className="mt-1 text-xs text-muted-foreground">Telescopic Channel 10 years, most of the range 5 years</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3.5">
+              <RotateCcw className="mt-0.5 size-6 shrink-0 text-accent-strong" />
+              <div>
+                <h3 className="font-semibold text-foreground">1,00,000 Cycle Tested</h3>
+                <p className="mt-1 text-xs text-muted-foreground">Telescopic Channels</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3.5">
+              <Package className="mt-0.5 size-6 shrink-0 text-accent-strong" />
+              <div>
+                <h3 className="font-semibold text-foreground">Trade Box Packing</h3>
+                <p className="mt-1 text-xs text-muted-foreground">Quantity per box listed on product pages</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -91,22 +102,28 @@ function Index() {
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <SectionHeader
             title="Featured Products"
-            description="Selected LEBCO hardware products for kitchen, furniture and utility applications."
+            description="Selected LEBCO hardware products with verified catalogue specifications."
           />
           <div className="mt-9 space-y-8">
             {featuredProducts.map((product, index) => (
               <article key={product.slug} className="grid gap-6 rounded-lg border border-border bg-card p-5 shadow-catalogue-sm md:grid-cols-2 md:items-center md:p-6">
                 <div className={index % 2 === 1 ? "md:order-2" : undefined}>
-                  <img src={product.image} alt={`${product.name} product placeholder`} className="aspect-[4/3] w-full rounded-md border border-border object-cover" loading="lazy" />
+                  <img src={product.image} alt={`${product.name} product photo`} className="aspect-[4/3] w-full rounded-md border border-border object-cover" loading="lazy" />
                 </div>
                 <div>
+                  <div className="mb-2 flex items-center gap-2">
+                    <span className="inline-block rounded bg-muted px-2 py-0.5 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                      {product.category}
+                    </span>
+                    {product.warranty ? (
+                      <span className="inline-flex items-center gap-1 rounded bg-accent/15 px-2 py-0.5 text-xs font-semibold text-accent-strong">
+                        <ShieldCheck className="size-3" />
+                        {product.warranty}
+                      </span>
+                    ) : null}
+                  </div>
                   <h3 className="text-2xl font-semibold text-foreground">{product.name}</h3>
-                  <p className="mt-3 text-base leading-7 text-muted-foreground">{product.description}</p>
-                  {product.keySpecification ? (
-                    <p className="mt-4 border-l-2 border-accent px-4 py-2 text-sm font-medium text-foreground">
-                      {product.keySpecification}
-                    </p>
-                  ) : null}
+                  <p className="mt-3 text-base leading-7 text-muted-foreground">{product.cardSummary}</p>
                   <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                     <Button asChild variant="outline">
                       <Link to="/products/$slug" params={{ slug: product.slug }}>
@@ -133,14 +150,13 @@ function Index() {
         />
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {[
-            { icon: ShieldCheck, text: "Durable construction" },
-            { icon: Wrench, text: "Practical hardware solutions" },
-            { icon: Boxes, text: "Space-saving designs" },
-            { icon: CheckCircle, text: "Rust-resistant options" },
-            { icon: ShieldCheck, text: "Heavy-duty options" },
-            { icon: Wrench, text: "Easy installation" },
+            { icon: ShieldCheck, text: "5 to 10 years warranty on core hardware" },
+            { icon: Sparkles, text: "Soft-close drawer systems" },
+            { icon: Boxes, text: "Exact sizes and dimensions listed for each product" },
+            { icon: Package, text: "Clear box packing quantities for bulk orders" },
+            { icon: CheckCircle, text: "Enquire in one tap on WhatsApp" },
           ].map((item) => (
-            <div key={item.text} className="flex items-center gap-3 rounded-lg border border-border bg-card p-5 shadow-catalogue-sm">
+            <div key={item.text} className="flex items-center gap-3.5 rounded-lg border border-border bg-card p-5 shadow-catalogue-sm">
               <item.icon aria-hidden="true" className="size-5 shrink-0 text-accent-strong" />
               <p className="font-medium text-foreground">{item.text}</p>
             </div>
