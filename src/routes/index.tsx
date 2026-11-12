@@ -108,7 +108,18 @@ function Index() {
             {featuredProducts.map((product, index) => (
               <article key={product.slug} className="grid gap-6 rounded-lg border border-border bg-card p-5 shadow-catalogue-sm md:grid-cols-2 md:items-center md:p-6">
                 <div className={index % 2 === 1 ? "md:order-2" : undefined}>
-                  <img src={product.image} alt={product.imageAlt || product.name} className="aspect-[4/3] w-full rounded-md border border-border object-cover" loading="lazy" />
+                  <img
+                    src={product.image}
+                    alt={product.imageAlt || product.name}
+                    className={`aspect-[4/3] w-full rounded-md border border-border ${
+                      product.slug === "2d-ss"
+                        ? "object-contain bg-white"
+                        : product.slug === "rolling-shutter"
+                        ? "object-contain bg-[#f8f9fa] p-2"
+                        : "object-cover"
+                    }`}
+                    loading="lazy"
+                  />
                 </div>
                 <div>
                   <div className="mb-2 flex items-center gap-2">

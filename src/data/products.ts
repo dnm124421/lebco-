@@ -12,23 +12,23 @@ import channelImage from "@/assets/products/channel/hero.jpg";
 import twoDHingesImage from "@/assets/products/2d/2d-hinge-new.png";
 import threeDHingesImage from "@/assets/products/3d/hero.jpg";
 import shortArmImage from "@/assets/products/short-arm/hero.jpg";
-import rollingShutterImage from "@/assets/products/rolling-shutter/rolling-shutter-hero.png";
+import rollingShutterImage from "@/assets/products/rolling-shutter/rolling-shutter-hero.jpg";
 
 export const businessInfo = {
   company: "LEBCO",
   tagline: "Hardware Solutions for Modern Spaces",
-  phone: "+91 95187 65434",
-  secondaryPhone: "+91 90236 38770",
-  phoneHref: "tel:+919518765434",
-  secondaryPhoneHref: "tel:+919023638770",
+  phone: "+91 79772 68987",
+  secondaryPhone: "+91 79772 68987",
+  phoneHref: "tel:+917977268987",
+  secondaryPhoneHref: "tel:+917977268987",
   whatsapp: "+91 79772 68987",
   whatsappNumber: "917977268987",
   email: "lebcohardware.marketing@gmail.com",
   emailHref: "mailto:lebcohardware.marketing@gmail.com",
   address:
-    "Dharam Phase 2 Complex, Ground Floor, Gala No. 12, Near by Vell Garam Pasayad, Bhiwandi, Pin - 421 308",
+    "Shop no. 02, BLDG no. 20, Hari Om APT PH-2, Ramchandra Nagar, Phoolpada Road, Vasai, Palghar, Vasai-Virar (East)",
   footerAddress:
-    "Dharam Phase 2 Complex, Ground Floor, Gala No. 12, Near by Vell Garam Pasayad, Bhiwandi, 421 308",
+    "Shop no. 02, BLDG no. 20, Hari Om APT PH-2, Ramchandra Nagar, Phoolpada Road, Vasai, Palghar, Vasai-Virar (East)",
   hours: "10:00 AM – 7:00 PM",
 };
 

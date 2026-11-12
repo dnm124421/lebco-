@@ -38,9 +38,6 @@ export function Footer() {
             <li className="flex gap-3">
               <Phone aria-hidden="true" className="mt-0.5 size-4 shrink-0" />
               <div className="flex flex-col">
-                <a href={businessInfo.secondaryPhoneHref} className="hover:text-primary-foreground">
-                  {businessInfo.secondaryPhone}
-                </a>
                 <a href={businessInfo.phoneHref} className="hover:text-primary-foreground">
                   {businessInfo.phone}
                 </a>

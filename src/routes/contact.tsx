@@ -13,7 +13,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Contact LEBCO for hardware product enquiries by phone, WhatsApp or email. View business hours and Bhiwandi address.",
+          "Contact LEBCO for hardware product enquiries by phone, WhatsApp or email. View business hours and Vasai office address.",
       },
       { property: "og:title", content: "Contact LEBCO — Phone, WhatsApp, Email and Address" },
       { property: "og:type", content: "website" },
@@ -47,12 +47,6 @@ function ContactPage() {
               <Phone aria-hidden="true" className="mt-1 size-5 shrink-0 text-accent-strong" />
               <div>
                 <h2 className="font-semibold text-foreground">Phone</h2>
-                <a
-                  href={businessInfo.secondaryPhoneHref}
-                  className="mt-1 block break-words text-muted-foreground transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  {businessInfo.secondaryPhone}
-                </a>
                 <a
                   href={businessInfo.phoneHref}
                   className="mt-1 block break-words text-muted-foreground transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"

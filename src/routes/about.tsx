@@ -92,8 +92,7 @@ function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="rounded-lg border border-border bg-card p-6 shadow-catalogue-sm">
             <h2 className="text-xl font-semibold text-foreground">Contact LEBCO</h2>
-            <p className="mt-3 text-muted-foreground">Phone: {businessInfo.phone} / {businessInfo.secondaryPhone}</p>
-            <p className="mt-2 text-muted-foreground">WhatsApp: {businessInfo.whatsapp}</p>
+            <p className="mt-3 text-muted-foreground">Phone / WhatsApp: {businessInfo.phone}</p>
             <p className="mt-2 break-all text-muted-foreground">Email: {businessInfo.email}</p>
           </div>
         </div>

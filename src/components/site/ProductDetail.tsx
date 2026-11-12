@@ -595,7 +595,13 @@ export function ProductDetail({ product }: { product: Product }) {
               <img
                 src={product.image}
                 alt={product.imageAlt || product.name}
-                className={`aspect-[4/3] w-full ${product.slug === "2d-ss" ? "object-contain bg-white" : "object-cover"}`}
+                className={`aspect-[4/3] w-full ${
+                  product.slug === "2d-ss"
+                    ? "object-contain bg-white"
+                    : product.slug === "rolling-shutter"
+                    ? "object-contain bg-[#f8f9fa] p-2"
+                    : "object-cover"
+                }`}
               />
             </div>
             {product.gallery && product.gallery.length > 0 ? (
