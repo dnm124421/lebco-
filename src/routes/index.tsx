@@ -52,8 +52,8 @@ function Index() {
               </Button>
             </div>
           </div>
-          <div className="overflow-hidden rounded-lg border border-border bg-card shadow-catalogue">
-            <img src={heroImage} alt="LEBCO hardware product catalogue display" className="aspect-[4/3] w-full object-cover" />
+          <div className="flex items-center justify-center overflow-hidden rounded-lg border border-border bg-card p-6 shadow-catalogue sm:p-10">
+            <img src={heroImage} alt="LEBCO Hardware Solutions" className="max-h-80 w-auto object-contain" />
           </div>
         </div>
 

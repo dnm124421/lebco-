@@ -1,4 +1,4 @@
-import heroHardware from "@/assets/hero/hardware-showcase.jpg";
+import heroHardware from "@/assets/logo.png";
 import antiSlipMattImage from "@/assets/products/anti-slip-matt/hero.jpg";
 import magicCornerImage from "@/assets/products/magic-corner/hero.jpg";
 import pantryImage from "@/assets/products/pantry/hero.jpg";
