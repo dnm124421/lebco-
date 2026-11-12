@@ -488,13 +488,13 @@ export const products: Product[] = [
       { src: pulloutWireImage, alt: "LEBCO Bottle Pullout Flatline Basket Variant", caption: "Flatline Basket Variant" },
     ],
     cardSummary:
-      "Glass or flatline bottle pullout. 2 and 3 layer. Cabinet widths 150, 250 and 300 mm.",
+      "Glass or flatline bottle pullout. 2 and 3 layer. Cabinet widths 150, 200, 250 and 300 mm.",
     description:
-      "Bottle Pullout is a pullout organiser for base cabinets, available in glass and flatline basket styles. It comes in 2-layer and 3-layer configurations for 150, 250 and 300 mm cabinet widths, with 18.5 inch long baskets, 6 inch wide for the 250 mm cabinet and 8 inch wide for the 300 mm cabinet, so bottles, jars and packs stay within easy reach.",
+      "Bottle Pullout is a pullout organiser for base cabinets, available in glass and flatline basket styles. It comes in 2-layer and 3-layer configurations for 150, 200, 250 and 300 mm cabinet widths, with 18.5 inch long baskets, 4.5 inch wide for 200 mm, 6 inch wide for 250 mm and 8 inch wide for 300 mm cabinets, so bottles, jars and packs stay within easy reach.",
     highlights: [
       { label: "Styles", value: "Glass / Flatline" },
       { label: "Layers", value: "2 & 3 Layer Configurations" },
-      { label: "Cabinet Widths", value: "150, 250, 300 mm" },
+      { label: "Cabinet Widths", value: "150, 200, 250, 300 mm" },
     ],
     specifications: [
       {
@@ -502,7 +502,8 @@ export const products: Product[] = [
         rows: [
           { label: "Styles", value: "Glass / Flatline" },
           { label: "Layers Available", value: "2 Layer and 3 Layer" },
-          { label: "Cabinet Widths", value: "150 mm, 250 mm, 300 mm" },
+          { label: "Cabinet Widths", value: "150 mm, 200 mm, 250 mm, 300 mm" },
+          { label: "200 mm Basket Size", value: '18.5" L x 4.5" W' },
           { label: "250 mm Basket Size", value: '18.5" L x 6" W' },
           { label: "300 mm Basket Size", value: '18.5" L x 8" W' },
         ],
@@ -514,6 +515,7 @@ export const products: Product[] = [
         headers: ["Cabinet T", "Width", "Depth", "Height"],
         rows: [
           ["150 mm", "114 mm", "500 mm", "500 mm"],
+          ["200 mm", "164 mm", "500 mm", "500 mm"],
           ["250 mm", "214 mm", "500 mm", "500 mm"],
           ["300 mm", "264 mm", "500 mm", "500 mm"],
         ],
@@ -523,6 +525,7 @@ export const products: Product[] = [
         headers: ["Cabinet T", "Width", "Depth", "Height"],
         rows: [
           ["150 mm", "114 mm", "500 mm", "600 mm"],
+          ["200 mm", "164 mm", "500 mm", "600 mm"],
           ["250 mm", "214 mm", "500 mm", "600 mm"],
           ["300 mm", "264 mm", "500 mm", "600 mm"],
         ],
