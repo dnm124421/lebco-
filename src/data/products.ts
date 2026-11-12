@@ -330,7 +330,7 @@ export const products: Product[] = [
     cardSummary:
       "Soft-close, full extension tandem drawer system. Up to 45 kg. 16 inch to 24 inch depths.",
     description:
-      "Slim Tandem Box is a soft-close, full extension tandem drawer system rated up to 45 kg. It comes in three heights (88, 120 and 168 mm) for 16 inch to 24 inch depths, with clip-on installation and 2 mm up/down panel adjustment for easy fitting and alignment.",
+      "Slim Tandem Box is a soft-close, full extension tandem drawer system rated up to 45 kg. It comes in three heights (88, 116 and 168 mm) for 16 inch to 24 inch depths, with clip-on installation and 2 mm up/down panel adjustment for easy fitting and alignment.",
     features: [
       "Full extension slides",
       "High load capacity up to 45 kg",
@@ -361,13 +361,13 @@ export const products: Product[] = [
         headers: ["Height Code", "Height", "Packing"],
         rows: [
           ["Code 4", "88 mm", "6 sets/box"],
-          ["Code 6", "120 mm", "6 sets/box"],
+          ["Code 6", "116 mm", "6 sets/box"],
           ["Code 8", "168 mm", "6 sets/box"],
         ],
       },
       {
         title: "Availability Matrix (Depth x Height)",
-        headers: ["Depth", "88 mm (Code 4)", "120 mm (Code 6)", "168 mm (Code 8)"],
+        headers: ["Depth", "88 mm (Code 4)", "116 mm (Code 6)", "168 mm (Code 8)"],
         rows: [
           ['16" (400 mm)', true, true, true],
           ['18" (450 mm)', true, true, true],
