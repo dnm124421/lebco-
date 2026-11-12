@@ -9,7 +9,7 @@ import thaliStandImage from "@/assets/products/thali-stand/hero.jpg";
 import wickerBasketImage from "@/assets/products/wicker-basket/hero.jpg";
 import tandemImage from "@/assets/products/tandem/hero.jpg";
 import channelImage from "@/assets/products/channel/hero.jpg";
-import twoDHingesImage from "@/assets/products/2d/hero.jpg";
+import twoDHingesImage from "@/assets/products/2d/2d-hinge-new.png";
 import threeDHingesImage from "@/assets/products/3d/hero.jpg";
 import shortArmImage from "@/assets/products/short-arm/hero.jpg";
 import rollingShutterImage from "@/assets/products/rolling-shutter/rolling-shutter-hero.png";
@@ -117,7 +117,7 @@ export const products: Product[] = [
     title: "Soft Close Hydraulic Clip-On & Fix Variants (180g)",
     category: "Hinges",
     image: twoDHingesImage,
-    imageAlt: "2D Hydraulic Auto Hinges soft close cabinet hinges in 180g",
+    imageAlt: "2D Hydraulic Auto Hinge with LEBCO marking",
     cardSummary:
       "Hydraulic soft-close clip-on and fix hinges in 180 g weight, with 0 degree full overlay and 8 degree half overlay.",
     description:
@@ -209,25 +209,25 @@ export const products: Product[] = [
   {
     slug: "short-arm",
     name: "Short Arm Hydraulic Hinges",
-    title: "Grade SS 304 Stainless Steel Soft Close (125g)",
+    title: "Stainless Steel (SS) Soft Close (150g)",
     category: "Hinges",
     image: shortArmImage,
-    imageAlt: "Short Arm Hydraulic Hinges compact cabinet hinge in SS 304",
+    imageAlt: "Short Arm Hydraulic Hinges compact cabinet hinge in stainless steel (SS)",
     cardSummary:
-      "Compact short arm hydraulic soft-close hinge in SS 304, 125 g, 0 degree full overlay.",
+      "Compact short arm hydraulic soft-close hinge in stainless steel (SS), 150 g, 0 degree full overlay.",
     description:
-      "Short Arm Hydraulic Hinges are compact soft-close hinges built in Stainless Steel Grade 304 with a hydraulic cylinder mechanism. At 125 grams they suit compact cabinets, modular kitchens, narrow frames and vanities, in 0 degree (full overlay). Each carton holds 100 sets with screws.",
+      "Short Arm Hydraulic Hinges are compact soft-close hinges built in Stainless Steel (SS) with a hydraulic cylinder mechanism. At 150 grams they suit compact cabinets, modular kitchens, narrow frames and vanities, in 0 degree (full overlay). Each carton holds 100 sets with screws.",
     features: [
       "Compact Short-Arm Design for Narrow Frames & Shallow Cabinets",
       "Built-in Hydraulic Soft Close Mechanism",
-      "125 Grams Engineered Solid Weight",
+      "150 Grams Engineered Solid Weight",
       "Rust-Proof and Moisture-Proof for Kitchens and Bathrooms",
       "0 degree (Full Overlay) Variant",
-      "Universal Mounting Holes with Heavy Screw Grip",
+      "Universal Mounting Holes",
     ],
     highlights: [
-      { label: "Weight", value: "125 Grams" },
-      { label: "Material", value: "SS Grade 304" },
+      { label: "Weight", value: "150 Grams" },
+      { label: "Material", value: "Stainless Steel (SS)" },
       { label: "Overlay", value: "0° (Full Overlay)" },
       { label: "Packaging", value: "100 Sets / Carton" },
     ],
@@ -236,19 +236,19 @@ export const products: Product[] = [
         title: "Specifications",
         rows: [
           { label: "Product Type", value: "Short Arm Hydraulic Hinge" },
-          { label: "Material", value: "Stainless Steel Grade 304 (SS 304)" },
-          { label: "Weight", value: "125 grams" },
+          { label: "Material", value: "Stainless Steel (SS)" },
+          { label: "Weight", value: "150 grams" },
           { label: "Mechanism", value: "Hydraulic Cylinder Soft Close" },
           { label: "Crank Angle", value: "0 degree (Full Overlay)" },
           { label: "Standard Packaging", value: "100 Sets (Per Carton)" },
-          { label: "Finish", value: "Mirror SS 304 Polish" },
+          { label: "Finish", value: "Mirror SS Polish" },
           { label: "Applications", value: "Compact Cabinets, Modular Kitchens, Narrow Frames, Vanities" },
         ],
       },
     ],
-    sizes: ["0 degree Full Overlay / 125g Short Arm"],
-    materials: ["Stainless Steel Grade 304 (SS 304)"],
-    colours: ["Mirror Polished SS 304"],
+    sizes: ["0 degree Full Overlay / 150g Short Arm"],
+    materials: ["Stainless Steel (SS)"],
+    colours: ["Mirror Polished SS"],
     packageContents: "100 Sets per Carton + Screws",
     layoutVariant: "hinge-summary",
     relatedSlugs: ["2d-ss", "3d", "tandem"],
@@ -330,7 +330,7 @@ export const products: Product[] = [
     cardSummary:
       "Soft-close, full extension tandem drawer system. Up to 45 kg. 16 inch to 24 inch depths.",
     description:
-      "Slim Tandem Box is a soft-close, full extension tandem drawer system rated up to 45 kg. It comes in four heights (88, 120, 168 and 199 mm) for 16 inch to 24 inch depths, with clip-on installation and 2 mm up/down panel adjustment for easy fitting and alignment.",
+      "Slim Tandem Box is a soft-close, full extension tandem drawer system rated up to 45 kg. It comes in three heights (88, 120 and 168 mm) for 16 inch to 24 inch depths, with clip-on installation and 2 mm up/down panel adjustment for easy fitting and alignment.",
     features: [
       "Full extension slides",
       "High load capacity up to 45 kg",
@@ -363,18 +363,17 @@ export const products: Product[] = [
           ["Code 4", "88 mm", "6 sets/box"],
           ["Code 6", "120 mm", "6 sets/box"],
           ["Code 8", "168 mm", "6 sets/box"],
-          ["Code 10", "199 mm", "5 sets/box"],
         ],
       },
       {
         title: "Availability Matrix (Depth x Height)",
-        headers: ["Depth", "88 mm (Code 4)", "120 mm (Code 6)", "168 mm (Code 8)", "199 mm (Code 10)"],
+        headers: ["Depth", "88 mm (Code 4)", "120 mm (Code 6)", "168 mm (Code 8)"],
         rows: [
-          ['16" (400 mm)', true, true, true, false],
-          ['18" (450 mm)', true, true, true, true],
-          ['20" (500 mm)', true, true, true, true],
-          ['22" (550 mm)', true, true, true, true],
-          ['24" (600 mm)', true, true, true, true],
+          ['16" (400 mm)', true, true, true],
+          ['18" (450 mm)', true, true, true],
+          ['20" (500 mm)', true, true, true],
+          ['22" (550 mm)', true, true, true],
+          ['24" (600 mm)', true, true, true],
         ],
       },
     ],
@@ -382,30 +381,30 @@ export const products: Product[] = [
     featured: false,
   },
 
-  // 6. Thali, Plate and Saucer Stand
+  // 6. Thali and Cup Saucer Stand
   {
     slug: "thali-stand",
-    name: "Thali, Plate and Saucer Stand",
+    name: "Thali and Cup Saucer Stand",
     title: "Kitchen Cabinet Organising Inserts",
     category: "Kitchen Storage",
     image: thaliStandImage,
-    imageAlt: "Thali, Plate and Saucer Stand kitchen cabinet organizing inserts",
+    imageAlt: "Thali and cup saucer stand inserts for kitchen cabinets",
     cardSummary:
-      "Stand inserts for thali, plates and saucers in 18, 20 and 22 inch sizes, 5 pcs per box.",
+      "Cup saucer and thali stand inserts in 18, 20, 22 and 24 inch sizes, 5 pcs per box.",
     description:
-      "Stand inserts for thali, plates and saucers designed for practical and neat kitchen cabinet organisation. Available as Saucer Stand, Plate Stand and Thali Stand in 18 inch, 20 inch and 22 inch sizes, packed 5 pcs per box. Each stand keeps your crockery upright and separated so every piece is easy to pick up.",
+      "Stand inserts for cup saucers and thalis designed for practical and neat kitchen cabinet organisation. Available as Cup Saucer Stand and Thali Stand in 18 inch, 20 inch, 22 inch and 24 inch sizes, packed 5 pcs per box. Each stand keeps your crockery upright and separated so every piece is easy to pick up.",
     packing: "5 pcs / box",
     highlights: [
-      { label: "Types Available", value: "Saucer, Plate & Thali" },
-      { label: "Available Sizes", value: '18", 20", 22"' },
+      { label: "Types Available", value: "Cup Saucer & Thali" },
+      { label: "Available Sizes", value: '18", 20", 22", 24"' },
       { label: "Trade Packing", value: "5 pcs / box" },
     ],
     specifications: [
       {
         title: "Specifications",
         rows: [
-          { label: "Types Available", value: "Saucer Stand, Plate Stand, Thali Stand" },
-          { label: "Available Sizes", value: "18 inch, 20 inch, 22 inch" },
+          { label: "Types Available", value: "Cup Saucer Stand, Thali Stand" },
+          { label: "Available Sizes", value: "18 inch, 20 inch, 22 inch, 24 inch" },
           { label: "Packing", value: "5 pcs / box" },
         ],
       },
@@ -418,6 +417,7 @@ export const products: Product[] = [
           ["18 inch", "5 pcs"],
           ["20 inch", "5 pcs"],
           ["22 inch", "5 pcs"],
+          ["24 inch", "5 pcs"],
         ],
       },
     ],
@@ -435,12 +435,12 @@ export const products: Product[] = [
     image: pvcCutleryImage,
     imageAlt: "PVC Cutlery Tray food-grade virgin PVC drawer organizer in grey high-gloss",
     cardSummary:
-      "Food-grade virgin PVC cutlery tray in grey high-gloss finish. Widths 400 to 900 mm, depths 480 mm and 535 mm.",
+      "Food-grade virgin PVC cutlery tray in grey high-gloss finish. Widths 450 to 900 mm, depths 480 mm and 535 mm.",
     description:
-      "PVC Cutlery Tray is made from 100% food-grade virgin PVC and is non-toxic, odour-free and easy to wipe clean. The multi-compartment layout keeps cutlery and utensils sorted, and trimmable edge flanges give a perfect fit in the drawer. Available in widths from 400 mm to 900 mm and in 480 mm and 535 mm depths, in a high-gloss mirror finish in designer grey. Standard packing is 10 pcs per carton.",
+      "PVC Cutlery Tray is made from 100% food-grade virgin PVC and is non-toxic, odour-free and easy to wipe clean. The multi-compartment layout keeps cutlery and utensils sorted, and trimmable edge flanges give a perfect fit in the drawer. Available in widths from 450 mm to 900 mm and in 480 mm and 535 mm depths, in a high-gloss mirror finish in designer grey. Standard packing is 10 pcs per carton.",
     packing: "10 pcs / carton",
     features: [
-      "Wide Drawer Width Range: 400, 500, 600, 700, 800, 900 mm",
+      "Wide Drawer Width Range: 450, 500, 600, 700, 800, 900 mm",
       "Dual Depth Compatibility: 480 mm and 535 mm",
       "100% Food-Grade Virgin PVC Material",
       "High-Gloss Mirror Finish in Designer Grey",
@@ -450,7 +450,7 @@ export const products: Product[] = [
       "10 Pcs Standard Carton Packaging",
     ],
     highlights: [
-      { label: "Width Range", value: "400 to 900 mm" },
+      { label: "Width Range", value: "450 to 900 mm" },
       { label: "Depths", value: "480 mm & 535 mm" },
       { label: "Material", value: "Food-Grade Virgin PVC" },
       { label: "Standard Packing", value: "10 pcs / carton" },
@@ -459,7 +459,7 @@ export const products: Product[] = [
       {
         title: "General Specifications",
         rows: [
-          { label: "Available Widths", value: "400mm, 500mm, 600mm, 700mm, 800mm, 900mm" },
+          { label: "Available Widths", value: "450mm, 500mm, 600mm, 700mm, 800mm, 900mm" },
           { label: "Depths Available", value: "480 mm and 535 mm" },
           { label: "Material", value: "Food Grade Virgin PVC" },
           { label: "Finish / Colour", value: "High Gloss Mirror Finish (Grey)" },
@@ -467,7 +467,7 @@ export const products: Product[] = [
         ],
       },
     ],
-    sizes: ["400, 500, 600, 700, 800, 900 mm"],
+    sizes: ["450, 500, 600, 700, 800, 900 mm"],
     materials: ["Virgin Food Grade PVC"],
     colours: ["Grey"],
     packageContents: "10 Pcs (Per Carton)",
@@ -488,13 +488,13 @@ export const products: Product[] = [
       { src: pulloutWireImage, alt: "LEBCO Bottle Pullout Flatline Basket Variant", caption: "Flatline Basket Variant" },
     ],
     cardSummary:
-      "Glass or flatline bottle pullout. 2 and 3 layer. Cabinet widths 200, 250 and 300 mm.",
+      "Glass or flatline bottle pullout. 2 and 3 layer. Cabinet widths 150, 250 and 300 mm.",
     description:
-      "Bottle Pullout is a pullout organiser for base cabinets, available in glass and flatline basket styles. It comes in 2-layer and 3-layer configurations for 200, 250 and 300 mm cabinet widths, with 18.5 inch long baskets in 4.5 inch, 6 inch and 8 inch widths, so bottles, jars and packs stay within easy reach.",
+      "Bottle Pullout is a pullout organiser for base cabinets, available in glass and flatline basket styles. It comes in 2-layer and 3-layer configurations for 150, 250 and 300 mm cabinet widths, with 18.5 inch long baskets, 6 inch wide for the 250 mm cabinet and 8 inch wide for the 300 mm cabinet, so bottles, jars and packs stay within easy reach.",
     highlights: [
       { label: "Styles", value: "Glass / Flatline" },
       { label: "Layers", value: "2 & 3 Layer Configurations" },
-      { label: "Cabinet Widths", value: "200, 250, 300 mm" },
+      { label: "Cabinet Widths", value: "150, 250, 300 mm" },
     ],
     specifications: [
       {
@@ -502,8 +502,7 @@ export const products: Product[] = [
         rows: [
           { label: "Styles", value: "Glass / Flatline" },
           { label: "Layers Available", value: "2 Layer and 3 Layer" },
-          { label: "Cabinet Widths", value: "200 mm, 250 mm, 300 mm" },
-          { label: "200 mm Basket Size", value: '18.5" L x 4.5" W' },
+          { label: "Cabinet Widths", value: "150 mm, 250 mm, 300 mm" },
           { label: "250 mm Basket Size", value: '18.5" L x 6" W' },
           { label: "300 mm Basket Size", value: '18.5" L x 8" W' },
         ],
@@ -514,7 +513,7 @@ export const products: Product[] = [
         title: "2 Layer Dimensions (mm)",
         headers: ["Cabinet T", "Width", "Depth", "Height"],
         rows: [
-          ["200 mm", "164 mm", "500 mm", "500 mm"],
+          ["150 mm", "114 mm", "500 mm", "500 mm"],
           ["250 mm", "214 mm", "500 mm", "500 mm"],
           ["300 mm", "264 mm", "500 mm", "500 mm"],
         ],
@@ -523,7 +522,7 @@ export const products: Product[] = [
         title: "3 Layer Dimensions (mm)",
         headers: ["Cabinet T", "Width", "Depth", "Height"],
         rows: [
-          ["200 mm", "164 mm", "500 mm", "600 mm"],
+          ["150 mm", "114 mm", "500 mm", "600 mm"],
           ["250 mm", "214 mm", "500 mm", "600 mm"],
           ["300 mm", "264 mm", "500 mm", "600 mm"],
         ],
@@ -683,13 +682,13 @@ export const products: Product[] = [
     image: antiSlipMattImage,
     imageAlt: "Anti Skid Drawer Mat protective surface grip roll",
     cardSummary:
-      "Anti-skid drawer mat rolls in 5 m and 20 m lengths. 500 and 550 mm widths.",
+      "Anti-skid drawer mat rolls in 5 m and 20 m lengths. 500, 550 and 600 mm widths.",
     description:
-      "Anti Skid Drawer Mat is a roll that keeps items from sliding inside kitchen and furniture drawers. It is available in 500 mm and 550 mm widths and in two roll lengths, 5 m and 20 m. The 5 m rolls are packed 10 pcs per box.",
+      "Anti Skid Drawer Mat is a roll that keeps items from sliding inside kitchen and furniture drawers. It is available in 500 mm, 550 mm and 600 mm widths and in two roll lengths, 5 m and 20 m. The 5 m rolls are packed 10 pcs per box.",
     packing: "10 pcs / box (5 m rolls)",
     highlights: [
       { label: "Roll Length", value: "5 m and 20 m" },
-      { label: "Width Options", value: "500 mm and 550 mm" },
+      { label: "Width Options", value: "500 mm, 550 mm and 600 mm" },
       { label: "Trade Packing", value: "10 pcs / box (5 m rolls)" },
     ],
     specifications: [
@@ -697,7 +696,7 @@ export const products: Product[] = [
         title: "Specifications",
         rows: [
           { label: "Roll Length", value: "5 m and 20 m" },
-          { label: "Widths Available", value: "500 mm, 550 mm" },
+          { label: "Widths Available", value: "500 mm, 550 mm, 600 mm" },
           { label: "Packing", value: "10 pcs / box (5 m rolls)" },
         ],
       },
@@ -709,6 +708,7 @@ export const products: Product[] = [
         rows: [
           ["500 mm", "5 m", "10 pcs"],
           ["550 mm", "5 m", "10 pcs"],
+          ["600 mm", "5 m", "10 pcs"],
         ],
         note: "20 m rolls are also available. Please enquire for width and packing details.",
       },

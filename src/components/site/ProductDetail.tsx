@@ -61,7 +61,7 @@ function BackButton() {
   );
 }
 
-// SECTION 5.6: Illustrated cards for Thali, Plate & Saucer Stand
+// SECTION 4.4: Illustrated cards for Thali and Cup Saucer Stand
 function ThaliArrangementSection() {
   return (
     <section className="space-y-4">
@@ -72,8 +72,8 @@ function ThaliArrangementSection() {
         </p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-3">
-        {/* Card 1: Saucer Stand */}
+      <div className="grid gap-6 md:grid-cols-2">
+        {/* Card 1: Cup Saucer Stand */}
         <div className="flex flex-col rounded-lg border border-border bg-card p-5 shadow-catalogue-sm">
           <div className="flex aspect-[16/10] w-full items-center justify-center rounded-md border border-border bg-catalogue-panel p-4">
             <svg
@@ -81,7 +81,7 @@ function ThaliArrangementSection() {
               viewBox="0 0 200 120"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              aria-label="Saucer stand with 5 saucers and 5 cups"
+              aria-label="Cup saucer stand with 5 saucers and 5 cups"
             >
               {/* Wire rack base */}
               <line x1="20" y1="95" x2="180" y2="95" stroke="currentColor" strokeWidth="3" className="text-muted-foreground/50" />
@@ -97,7 +97,7 @@ function ThaliArrangementSection() {
               ))}
 
               {/* 5 Cups (right side) */}
-              {[118, 134, 150, 166, 180].map((x, i) => (
+              {[118, 134, 150, 166, 180].map((x) => (
                 <g key={x}>
                   <rect x={x - 6} y="68" width="12" height="18" rx="2" stroke="currentColor" strokeWidth="2" className="text-foreground fill-card" />
                   <path d={`M ${x + 6} 72 C ${x + 10} 72, ${x + 10} 80, ${x + 6} 80`} stroke="currentColor" strokeWidth="1.5" className="text-foreground fill-none" />
@@ -105,41 +105,12 @@ function ThaliArrangementSection() {
               ))}
             </svg>
           </div>
-          <h3 className="mt-4 font-semibold text-foreground">Saucer Stand</h3>
+          <h3 className="mt-4 font-semibold text-foreground">Cup Saucer Stand</h3>
           <p className="mt-1 text-sm text-muted-foreground">Sample arrangement: 5 saucers with 5 cups.</p>
-          <p className="mt-3 text-xs font-medium text-accent-strong">Available sizes: 18 inch, 20 inch, 22 inch</p>
+          <p className="mt-3 text-xs font-medium text-accent-strong">Available sizes: 18 inch, 20 inch, 22 inch, 24 inch</p>
         </div>
 
-        {/* Card 2: Plate Stand */}
-        <div className="flex flex-col rounded-lg border border-border bg-card p-5 shadow-catalogue-sm">
-          <div className="flex aspect-[16/10] w-full items-center justify-center rounded-md border border-border bg-catalogue-panel p-4">
-            <svg
-              className="h-full w-full max-w-[200px]"
-              viewBox="0 0 200 120"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-label="Plate stand holding 5 plates"
-            >
-              {/* Wire rack base */}
-              <line x1="20" y1="100" x2="180" y2="100" stroke="currentColor" strokeWidth="3" className="text-muted-foreground/50" />
-              <line x1="30" y1="100" x2="30" y2="108" stroke="currentColor" strokeWidth="2.5" className="text-muted-foreground/50" />
-              <line x1="170" y1="100" x2="170" y2="108" stroke="currentColor" strokeWidth="2.5" className="text-muted-foreground/50" />
-
-              {/* 5 Plates */}
-              {[45, 72, 100, 128, 155].map((x) => (
-                <g key={x}>
-                  <line x1={x} y1="100" x2={x + 3} y2="25" stroke="currentColor" strokeWidth="2" className="text-muted-foreground/60" />
-                  <ellipse cx={x + 2} cy="60" rx="9" ry="36" stroke="currentColor" strokeWidth="2.5" className="text-accent-strong fill-accent/15" />
-                </g>
-              ))}
-            </svg>
-          </div>
-          <h3 className="mt-4 font-semibold text-foreground">Plate Stand</h3>
-          <p className="mt-1 text-sm text-muted-foreground">Sample arrangement: 5 plates.</p>
-          <p className="mt-3 text-xs font-medium text-accent-strong">Available sizes: 18 inch, 20 inch, 22 inch</p>
-        </div>
-
-        {/* Card 3: Thali Stand */}
+        {/* Card 2: Thali Stand */}
         <div className="flex flex-col rounded-lg border border-border bg-card p-5 shadow-catalogue-sm">
           <div className="flex aspect-[16/10] w-full items-center justify-center rounded-md border border-border bg-catalogue-panel p-4">
             <svg
@@ -166,7 +137,7 @@ function ThaliArrangementSection() {
           </div>
           <h3 className="mt-4 font-semibold text-foreground">Thali Stand</h3>
           <p className="mt-1 text-sm text-muted-foreground">Sample arrangement: 5 thalis.</p>
-          <p className="mt-3 text-xs font-medium text-accent-strong">Available sizes: 18 inch, 20 inch, 22 inch</p>
+          <p className="mt-3 text-xs font-medium text-accent-strong">Available sizes: 18 inch, 20 inch, 22 inch, 24 inch</p>
         </div>
       </div>
 
@@ -624,7 +595,7 @@ export function ProductDetail({ product }: { product: Product }) {
               <img
                 src={product.image}
                 alt={product.imageAlt || product.name}
-                className="aspect-[4/3] w-full object-cover"
+                className={`aspect-[4/3] w-full ${product.slug === "2d-ss" ? "object-contain bg-white" : "object-cover"}`}
               />
             </div>
             {product.gallery && product.gallery.length > 0 ? (

@@ -20,7 +20,7 @@ export function ProductCard({ product }: { product: Product }) {
           <img
             src={product.image}
             alt={product.imageAlt || product.name}
-            className="aspect-[4/3] w-full object-cover"
+            className={`aspect-[4/3] w-full ${product.slug === "2d-ss" ? "object-contain bg-white" : "object-cover"}`}
             loading="lazy"
           />
         </Link>
