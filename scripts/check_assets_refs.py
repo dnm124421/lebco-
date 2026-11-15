@@ -14,3 +14,4 @@ for root, dirs, files in os.walk('src'):
 print(f"References to /assets/ or /public/ in src/: {len(matches_found)}")
 for fp, m in matches_found:
     print(f"  {fp}: {m}")
+

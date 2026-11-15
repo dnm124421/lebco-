@@ -18,3 +18,4 @@ sz = audits.get('total-byte-weight', {}).get('numericValue', 0)
 print(f"Total Transfer Size: {sz/1024:.2f} KB ({sz/(1024*1024):.2f} MB)")
 reqs = audits.get('network-requests', {}).get('details', {}).get('items', [])
 print(f"Total Network Requests: {len(reqs)}")
+

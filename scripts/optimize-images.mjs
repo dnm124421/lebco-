@@ -87,20 +87,33 @@ async function optimize() {
 
     const logoPngPath = path.join(ASSETS_DIR, 'logo.png');
     const logoWebpPath = path.join(ASSETS_DIR, 'logo.webp');
+    const logoHero640 = path.join(ASSETS_DIR, 'logo-hero-640w.webp');
+    const logoHero1280 = path.join(ASSETS_DIR, 'logo-hero-1280w.webp');
 
-    if (!fs.existsSync(logoWebpPath) || fs.statSync(logoWebpPath).mtimeMs < origStat.mtimeMs) {
-      const logoWebpBuf = await sharp(logoSrc)
-        .resize(240)
-        .webp({ quality: 80, effort: 6 })
+    if (!fs.existsSync(logoHero1280) || fs.statSync(logoHero1280).mtimeMs < origStat.mtimeMs) {
+      const hero1280Buf = await sharp(logoSrc)
+        .resize(1280)
+        .webp({ quality: 85, effort: 6 })
         .toBuffer();
+      fs.writeFileSync(logoHero1280, hero1280Buf);
+
+      const hero640Buf = await sharp(logoSrc)
+        .resize(640)
+        .webp({ quality: 85, effort: 6 })
+        .toBuffer();
+      fs.writeFileSync(logoHero640, hero640Buf);
+
+      const logoWebpBuf = await sharp(logoSrc)
+        .resize(400)
+        .webp({ quality: 85, effort: 6 })
+        .toBuffer();
+      fs.writeFileSync(logoWebpPath, logoWebpBuf);
 
       const logoPngBuf = await sharp(logoSrc)
-        .resize(240)
+        .resize(400)
         .png({ compressionLevel: 9, effort: 10 })
         .toBuffer();
-
       fs.writeFileSync(logoPngPath, logoPngBuf);
-      fs.writeFileSync(logoWebpPath, logoWebpBuf);
     }
 
     const currentWebpSize = fs.statSync(logoWebpPath).size;

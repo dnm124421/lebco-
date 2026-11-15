@@ -92,7 +92,6 @@ export type Product = {
   gallery?: GalleryItem[];
   cardSummary: string;
   description: string;
-  warranty?: string;
   packing?: string;
   highlights?: HighlightCard[];
   features?: string[];
@@ -216,7 +215,7 @@ export const products: Product[] = [
     cardSummary:
       "Compact short arm hydraulic soft-close hinge in stainless steel (SS), 150 g, 0 degree full overlay.",
     description:
-      "Short Arm Hydraulic Hinges are compact soft-close hinges built in Stainless Steel (SS) with a hydraulic cylinder mechanism. At 150 grams they suit compact cabinets, modular kitchens, narrow frames and vanities, in 0 degree (full overlay). Each carton holds 100 sets with screws.",
+      "Short Arm Hydraulic Hinges are compact soft-close hinges built in Stainless Steel (SS) with a hydraulic cylinder mechanism. At 150 grams they suit compact cabinets, modular kitchens, narrow frames and vanities, in 0 degree (full overlay).",
     features: [
       "Compact Short-Arm Design for Narrow Frames & Shallow Cabinets",
       "Built-in Hydraulic Soft Close Mechanism",
@@ -255,63 +254,56 @@ export const products: Product[] = [
     featured: false,
   },
 
-  // 4. Telescopic Channel (Regular and Soft Close)
+  // 4. Telescopic Channel
   {
     slug: "channel",
-    name: "Telescopic Channel (Regular and Soft Close)",
+    name: "Telescopic Channel",
     title: "Full Extension Ball-Bearing Drawer Slides",
     category: "Drawer Systems",
     image: channelImage,
     imageAlt: "Telescopic Channel full extension ball-bearing drawer slides",
     cardSummary:
-      "Full extension ball-bearing channel. Up to 45 kg. Regular and soft close. 10 years warranty.",
+      "Full extension ball-bearing channel. Up to 45 kg.",
     description:
-      "Telescopic Channel is an extra heavy, full extension ball-bearing drawer channel rated up to 45 kg, in regular and soft-close versions. A big nylon lock reduces noise, the 2-ball cage with high-carbon MS balls gives smooth long-term running, and the European anti-rust coating protects the finish. It is tested for 1,00,000 cycles and available in depths from 10 inch to 24 inch.",
-    warranty: "10 Years Warranty",
+      "Telescopic Channel is an extra heavy, full extension ball-bearing drawer channel rated up to 45 kg. A big nylon lock reduces noise, and the 2-ball cage with high-carbon MS balls gives smooth long-term running. It is tested for 1,00,000 cycles and available in depths from 10 inch to 24 inch.",
     packing: "15 sets/box",
     features: [
-      "Big nylon lock for better grip, designed to reduce noise while the drawer opens and closes",
+      "Big nylon lock for better grip, designed to reduce noise",
       "2-ball cage for heavy duty and smooth running",
-      "High-carbon MS balls for durable, smooth flow",
-      "European anti-rust coating",
-      "1,00,000 cycle tested",
-      "1.2 x 1.2 x 1.2 mm thick material gives high load capacity up to 45 kg",
-      "Anti-rust ball bearing",
+      "High-carbon MS balls for durable and smooth flow",
       "Extra heavy and full extension",
     ],
     highlights: [
       { label: "Load Capacity", value: "Up to 45 kg" },
       { label: "Cycle Testing", value: "1,00,000 Cycles" },
       { label: "Packing", value: "15 sets/box" },
-      { label: "Warranty", value: "10 Years Warranty" },
     ],
     specifications: [
       {
         title: "Specifications",
         rows: [
           { label: "Load Capacity", value: "Up to 45 kg" },
-          { label: "Finishes", value: "Black and Zinc (soft close version: Zinc only)" },
-          { label: "Variants", value: "45 kg (72 gm) and 45 kg Soft Close (Zinc only)" },
+          { label: "Finishes", value: "Black and Zinc" },
+          { label: "Variant", value: "45 kg (72 gm)" },
           { label: "Testing", value: "1,00,000 cycle tested" },
           { label: "Material Thickness", value: "1.2 x 1.2 x 1.2 mm" },
           { label: "Packing", value: "15 sets/box" },
-          { label: "Warranty", value: "10 Years" },
         ],
       },
     ],
     variantsTables: [
       {
         title: "Availability by Size & Variant",
-        headers: ["Size", "45 kg (Black and Zinc)", "45 kg Soft Close (Zinc only)"],
+        headers: ["Size", "45 kg (Black and Zinc)"],
         rows: [
-          ['10" (250 mm)', true, false],
-          ['12" (300 mm)', true, true],
-          ['14" (350 mm)', true, true],
-          ['16" (400 mm)', true, true],
-          ['18" (450 mm)', true, true],
-          ['20" (500 mm)', true, true],
-          ['22" (550 mm)', true, true],
-          ['24" (600 mm)', true, true],
+          ['10" (250 mm)', true],
+          ['12" (300 mm)', true],
+          ['14" (350 mm)', true],
+          ['16" (400 mm)', true],
+          ['18" (450 mm)', true],
+          ['20" (500 mm)', true],
+          ['22" (550 mm)', true],
+          ['24" (600 mm)', true],
         ],
       },
     ],
@@ -381,43 +373,43 @@ export const products: Product[] = [
     featured: false,
   },
 
-  // 6. Thali and Cup Saucer Stand
+  // 6. Plate, Cup and Saucer Stand
   {
     slug: "thali-stand",
-    name: "Thali and Cup Saucer Stand",
+    name: "Plate, Cup and Saucer Stand",
     title: "Kitchen Cabinet Organising Inserts",
     category: "Kitchen Storage",
     image: thaliStandImage,
-    imageAlt: "Thali and cup saucer stand inserts for kitchen cabinets",
+    imageAlt: "Plate, cup and saucer stand inserts for kitchen cabinets",
     cardSummary:
-      "Cup saucer and thali stand inserts in 18, 20, 22 and 24 inch sizes, 5 pcs per box.",
+      "Stand inserts for plates, cups and saucers in 18, 20, 22 and 24 inch sizes.",
     description:
-      "Stand inserts for cup saucers and thalis designed for practical and neat kitchen cabinet organisation. Available as Cup Saucer Stand and Thali Stand in 18 inch, 20 inch, 22 inch and 24 inch sizes, packed 5 pcs per box. Each stand keeps your crockery upright and separated so every piece is easy to pick up.",
-    packing: "5 pcs / box",
+      "Stand inserts for plates, cups and saucers designed for practical and neat kitchen cabinet organisation. Available as Cup Saucer Stand and Plate Stand in 18 inch, 20 inch, 22 inch and 24 inch sizes, packed 4 pcs per box. Each stand keeps your crockery upright and separated so every piece is easy to pick up.",
+    packing: "4 pcs / box",
     highlights: [
-      { label: "Types Available", value: "Cup Saucer & Thali" },
+      { label: "Types Available", value: "Cup Saucer Stand, Plate Stand" },
       { label: "Available Sizes", value: '18", 20", 22", 24"' },
-      { label: "Trade Packing", value: "5 pcs / box" },
+      { label: "Trade Packing", value: "4 pcs / box" },
     ],
     specifications: [
       {
         title: "Specifications",
         rows: [
-          { label: "Types Available", value: "Cup Saucer Stand, Thali Stand" },
+          { label: "Types Available", value: "Cup Saucer Stand, Plate Stand" },
           { label: "Available Sizes", value: "18 inch, 20 inch, 22 inch, 24 inch" },
-          { label: "Packing", value: "5 pcs / box" },
+          { label: "Packing", value: "4 pcs / box" },
         ],
       },
     ],
     variantsTables: [
       {
         title: "Size & Packing Details",
-        headers: ["Size", "Qty per Box"],
+        headers: ["Size", "Packing"],
         rows: [
-          ["18 inch", "5 pcs"],
-          ["20 inch", "5 pcs"],
-          ["22 inch", "5 pcs"],
-          ["24 inch", "5 pcs"],
+          ["18 inch", "4 pcs / box"],
+          ["20 inch", "4 pcs / box"],
+          ["22 inch", "4 pcs / box"],
+          ["24 inch", "4 pcs / box"],
         ],
       },
     ],
@@ -540,25 +532,25 @@ export const products: Product[] = [
     title: "Tall Pantry Pullout Storage Unit",
     category: "Kitchen Storage",
     image: pantryImage,
-    imageAlt: "Tall Pantry Unit 6 ft pullout with 6 layers",
+    imageAlt: "Tall Pantry Unit pullout in 6 ft (6 layers) and 4 ft (4 layers)",
     cardSummary:
-      "Tall 6 ft pantry pullout with 6 layers. 450 and 600 mm cabinets.",
+      "Tall pantry pullout in 6 ft (6 layers) and 4 ft (4 layers). 450 and 600 mm cabinets.",
     description:
-      "Pantry Unit is a tall 6 ft pullout with 6 layers, available in glass and flatline styles for 450 mm and 600 mm cabinet widths. The unit is 1820 mm high and 510 mm deep, and needs a cabinet of at least 550 mm depth and 1830 mm height.",
+      "Pantry Unit is a tall pullout available in 6 ft (1820 mm, 6 layers) and 4 ft (1200 mm, 4 layers) heights, in glass and flatline styles for 450 mm and 600 mm cabinet widths. The unit is 510 mm deep. The 6 ft unit needs a cabinet of at least 550 mm depth and 1830 mm height.",
     highlights: [
       { label: "Styles", value: "Glass / Flatline" },
-      { label: "Height Option", value: "6 ft (6 Layers)" },
-      { label: "Cabinets", value: "450 mm & 600 mm" },
+      { label: "Height Option", value: "6 ft (6 Layers) and 4 ft (4 Layers)" },
+      { label: "Cabinets", value: "450 mm and 600 mm" },
     ],
     specifications: [
       {
         title: "Specifications",
         rows: [
           { label: "Styles", value: "Glass / Flatline" },
-          { label: "Height Available", value: "6 ft (1820 mm)" },
-          { label: "Layer Configuration", value: "6 Layers" },
+          { label: "Heights Available", value: "6 ft (1820 mm) and 4 ft (1200 mm)" },
+          { label: "Layer Configuration", value: "6 Layers (6 ft) / 4 Layers (4 ft)" },
           { label: "Cabinet Widths", value: "450 mm, 600 mm" },
-          { label: "Cabinet Requirement", value: "Minimum 550 mm depth and minimum 1830 mm height" },
+          { label: "Cabinet Requirement (6 ft unit)", value: "Minimum 550 mm depth and minimum 1830 mm height" },
         ],
       },
     ],
@@ -569,6 +561,8 @@ export const products: Product[] = [
         rows: [
           ["450 mm", "414 mm", "510 mm", "1820 mm (6 ft)", "6 layers"],
           ["600 mm", "564 mm", "510 mm", "1820 mm (6 ft)", "6 layers"],
+          ["450 mm", "414 mm", "510 mm", "1200 mm (4 ft)", "4 layers"],
+          ["600 mm", "564 mm", "510 mm", "1200 mm (4 ft)", "4 layers"],
         ],
       },
     ],

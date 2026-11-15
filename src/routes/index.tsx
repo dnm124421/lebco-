@@ -4,7 +4,9 @@ import { ArrowRight, Boxes, CheckCircle, Package, ShieldCheck, Sparkles, Zap } f
 import { ProductGrid } from "@/components/site/ProductGrid";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { Button } from "@/components/ui/button";
-import { businessInfo, heroImage, products } from "@/data/products";
+import { businessInfo, products } from "@/data/products";
+import heroLogo1280 from "@/assets/logo-hero-1280w.webp";
+import heroLogo640 from "@/assets/logo-hero-640w.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,7 +30,7 @@ export const Route = createFileRoute("/")({
       {
         rel: "preload",
         as: "image",
-        href: heroImage,
+        href: heroLogo1280,
         fetchPriority: "high",
       },
     ],
@@ -42,11 +44,13 @@ function Index() {
       <section className="border-b border-border bg-background">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8 lg:py-16">
           <div className="flex flex-col justify-center">
-            <p className="text-sm font-semibold uppercase tracking-wide text-accent-strong">{businessInfo.company}</p>
-            <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-foreground md:text-5xl">
-              Quality Hardware. Built for Everyday Use.
+            <h1 className="text-[clamp(2.5rem,7vw,4.5rem)] font-extrabold tracking-[0.08em] leading-none text-foreground uppercase">
+              LEBCO
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">
+            <h2 className="mt-4 text-[clamp(1.375rem,3.2vw,2.125rem)] font-medium leading-snug text-foreground">
+              Quality Hardware. Built for Everyday Use.
+            </h2>
+            <p className="mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground">
               Explore our range of premium modular kitchen, architectural furniture and utility hardware solutions designed for smooth motion and long-lasting durability.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -61,16 +65,23 @@ function Index() {
             </div>
           </div>
           <div className="flex items-center justify-center overflow-hidden rounded-lg border border-border bg-card p-6 shadow-catalogue sm:p-10">
-            <img
-              src={heroImage}
-              alt="LEBCO Hardware Solutions"
-              width={320}
-              height={320}
-              loading="eager"
-              fetchPriority="high"
-              decoding="sync"
-              className="max-h-80 w-auto object-contain"
-            />
+            <picture className="w-full flex justify-center">
+              <source
+                type="image/webp"
+                srcSet={`${heroLogo640} 640w, ${heroLogo1280} 1280w`}
+                sizes="(max-width: 640px) 80vw, 480px"
+              />
+              <img
+                src={heroLogo1280}
+                alt="LEBCO - Believe To Make It Possible"
+                width={480}
+                height={440}
+                loading="eager"
+                fetchPriority="high"
+                decoding="sync"
+                className="w-[80%] max-w-[420px] h-auto object-contain"
+              />
+            </picture>
           </div>
         </div>
 
@@ -87,7 +98,7 @@ function Index() {
             <div className="flex items-start gap-3.5">
               <Zap className="mt-0.5 size-6 shrink-0 text-accent-strong" />
               <div>
-                <h3 className="font-semibold text-foreground">SS 304 & Heavy MS</h3>
+                <h3 className="font-semibold text-foreground">Heavy MS & SS</h3>
                 <p className="mt-1 text-xs text-muted-foreground">Rust-Proof Coated</p>
               </div>
             </div>

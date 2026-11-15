@@ -13,3 +13,4 @@ packages = [
 for p in packages:
     count = content.count(p)
     print(f"Package mention '{p}': {count} occurrences")
+

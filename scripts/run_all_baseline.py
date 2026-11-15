@@ -18,3 +18,4 @@ for out_file, url in urls:
     ]
     subprocess.run(" ".join(cmd), shell=True, check=True)
     print(f"Finished {out_file}")
+

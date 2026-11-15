@@ -26,3 +26,4 @@ for name, fname in files:
     transfer = f"{sz/1024:.1f} KB"
     reqs = str(len(audits.get('network-requests', {}).get('details', {}).get('items', [])))
     print(row_fmt % (name, score, lcp, fcp, tbt, cls, transfer, reqs))
+

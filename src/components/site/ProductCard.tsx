@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, MessageCircle, ShieldCheck } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import type { Product } from "@/data/products";
@@ -16,8 +16,6 @@ export function ProductCard({
   priority?: boolean;
 }) {
   const isEager = priority || index < 2;
-  // Warranty chip only on the Telescopic Channel card ("10 Years Warranty")
-  const showWarranty = product.slug === "channel" && Boolean(product.warranty);
   const responsive = productImages[product.slug];
 
   return (
@@ -63,12 +61,6 @@ export function ProductCard({
             />
           </picture>
         </Link>
-        {showWarranty ? (
-          <div className="absolute top-3 right-3 rounded-md bg-accent px-2.5 py-1 text-xs font-semibold text-accent-foreground shadow-sm flex items-center gap-1">
-            <ShieldCheck className="size-3.5" />
-            <span>{product.warranty}</span>
-          </div>
-        ) : null}
       </div>
       <div className="flex flex-1 flex-col p-5">
         <div className="mb-2">

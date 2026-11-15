@@ -6,6 +6,15 @@ import { productImages } from "@/data/product-images";
 
 export const Route = createFileRoute("/products/$slug")({
   beforeLoad: ({ params }) => {
+    // 301 redirect for renamed Plate, Cup and Saucer Stand
+    if (params.slug === "plate-cup-saucer-stand") {
+      throw redirect({
+        to: "/products/$slug",
+        params: { slug: "thali-stand" },
+        statusCode: 301,
+      });
+    }
+
     // 301 redirects for removed products
     if (["model-202", "bed-fitting", "table-bracket"].includes(params.slug)) {
       throw redirect({
@@ -27,10 +36,7 @@ export const Route = createFileRoute("/products/$slug")({
       };
     }
 
-    const title =
-      product.slug === "channel"
-        ? `${product.name} - Sizes, Specifications & Warranty | LEBCO`
-        : `${product.name} - Sizes & Specifications | LEBCO`;
+    const title = `${product.name} - Sizes & Specifications | LEBCO`;
 
     const description = product.cardSummary;
     const responsive = productImages[product.slug];

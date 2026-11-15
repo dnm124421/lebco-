@@ -277,7 +277,7 @@ Do not invent company history or founding information.
 
 Display all 9 products:
 
-1. Thali Stand
+1. Plate, Cup and Saucer Stand
 2. PVC Cutlery
 3. Pullout
 4. Pantry
@@ -327,7 +327,6 @@ Display:
 * Sizes
 * Materials
 * Colours where provided
-* Warranty where provided
 * Package contents where provided
 * Enquire Now
 
@@ -337,9 +336,9 @@ The specification section should look like a professional product catalogue.
 
 ---
 
-# 12. PRODUCT 1 — THALI STAND
+# 12. PRODUCT 1 — Plate, Cup and Saucer Stand
 
-**Name:** Thali Stand
+**Name:** Plate, Cup and Saucer Stand
 
 **Colour:** Grey
 
@@ -356,7 +355,7 @@ The specification section should look like a professional product catalogue.
 
 ### Description
 
-Premium Thali Stand – Strong, durable, and designed for neat and organized kitchen storage. Perfect for keeping thalis, plates, and utensils safely arranged while saving valuable space.
+Premium Plate, Cup and Saucer Stand – Strong, durable, and designed for neat and organized kitchen storage. Perfect for keeping plates, plates, and utensils safely arranged while saving valuable space.
 
 ### Additional information
 
@@ -379,14 +378,14 @@ Height: 25 cm / 10 inch
 Length: 30 cm / 12 inch
 Breadth: 22 cm / 9 inch
 Height: 30 cm / 12 inch
-Capacity: 8 Thali / Plates
+Capacity: 8 plate / Plates
 
 ### Large
 
 Length: 35 cm / 14 inch
 Breadth: 25 cm / 10 inch
 Height: 35 cm / 14 inch
-Capacity: 12 Thali / Plates
+Capacity: 12 plate / Plates
 
 Do not invent capacities for other variants.
 
@@ -560,24 +559,24 @@ Use the catalogue spelling **Anti Slip Matt**.
 
 ### Title
 
-Stainless Steel Magic Corner for Kitchen | Soft Close Magic Corner Basket for Modular Kitchen | L Shape Corner Storage Organizer | 304 SS, Right Hand (900mm)
+Stainless Steel Magic Corner for Kitchen | Soft Close Magic Corner Basket for Modular Kitchen | L Shape Corner Storage Organizer | SS, Right Hand (900mm)
 
 ### Description
 
-Magic Corner is a smart storage solution for your L-shaped modular kitchen. It utilizes your dead corner space with sliding baskets that come out smoothly. Made with 304 Stainless Steel wire, it is rust-proof and heavy-duty. Best for storing heavy utensils, pots, and kitchen items.
+Magic Corner is a smart storage solution for your L-shaped modular kitchen. It utilizes your dead corner space with sliding baskets that come out smoothly. Made with Stainless Steel (SS) wire, it is rust-proof and heavy-duty. Best for storing heavy utensils, pots, and kitchen items.
 
 ### Features
 
 * Smart Space Saving for L-Shape Kitchen Corner
 * Heavy Duty 25KG Capacity Per Basket
-* 304 Food Grade Stainless Steel - No Rust
+* Food Grade Stainless Steel (SS) - No Rust
 * Soft Close Sliding Channel - No Noise
 * Left & Right Hand Option Available
 * Easy to Install & Clean
 
 ### Specifications
 
-Material: 304 Stainless Steel Wire + Mild Steel Frame
+Material: Stainless Steel (SS) Wire + Mild Steel Frame
 
 Colour: Silver (Chrome Finish)
 
@@ -596,9 +595,6 @@ Finish: Chrome Plated & SS
 Type: Soft Close Magic Corner
 
 Hand: Right Hand / Left Hand
-
-Warranty: 2 Years
-
 ### Package
 
 1 Set Magic Corner Frame + 2 Baskets + Channel + Screws + Installation Manual
@@ -616,12 +612,12 @@ Warranty: 2 Years
 
 ### Description
 
-Wicker Basket is made for modern modular kitchens. Its perforated wicker design allows air circulation, keeping your vegetables and utensils fresh. Made with 304 Stainless Steel and PVC coated wicker sheet, it is rust-proof and long-lasting. Perfect for storing utensils, vegetables, and kitchen essentials.
+Wicker Basket is made for modern modular kitchens. Its perforated wicker design allows air circulation, keeping your vegetables and utensils fresh. Made with Stainless Steel (SS) and PVC coated wicker sheet, it is rust-proof and long-lasting. Perfect for storing utensils, vegetables, and kitchen essentials.
 
 ### Material
 
 * Stainless Steel Wire + Wicker Sheet (PVC Coating)
-* Frame: SS 304
+* Frame: SS
 * Heavy Duty & Rust Proof
 
 ### Height
@@ -707,9 +703,6 @@ Weight Capacity: 300 KG Full Bed
 Finish: Nickel Plated
 
 Use: Wooden Bed, Double Bed, Single Bed, Box Bed
-
-Warranty: 1 Year
-
 ### Types
 
 * L-Type Bed Fitting: For single bed - 2 inch size
@@ -777,9 +770,6 @@ Wall Table
 Folding Table
 Shelf Support
 Study Table
-
-Warranty: 1 Year
-
 ### Types
 
 * Folding Bracket — Foldable, space saving
@@ -1079,7 +1069,7 @@ assets/
 └── products/
 
 ```
-├── thali-stand/
+├── plate-stand/
 
 ├── pvc-cutlery/
 

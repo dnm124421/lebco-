@@ -62,8 +62,8 @@ function BackButton() {
   );
 }
 
-// SECTION 4.4: Illustrated cards for Thali and Cup Saucer Stand
-function ThaliArrangementSection() {
+// SECTION 4.4: Illustrated cards for Plate and Cup Saucer Stand
+function PlateArrangementSection() {
   return (
     <section className="space-y-4">
       <div>
@@ -111,7 +111,7 @@ function ThaliArrangementSection() {
           <p className="mt-3 text-xs font-medium text-accent-strong">Available sizes: 18 inch, 20 inch, 22 inch, 24 inch</p>
         </div>
 
-        {/* Card 2: Thali Stand */}
+        {/* Card 2: Plate Stand */}
         <div className="flex flex-col rounded-lg border border-border bg-card p-5 shadow-catalogue-sm">
           <div className="flex aspect-[16/10] w-full items-center justify-center rounded-md border border-border bg-catalogue-panel p-4">
             <svg
@@ -119,14 +119,14 @@ function ThaliArrangementSection() {
               viewBox="0 0 200 120"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              aria-label="Thali stand holding 5 thalis"
+              aria-label="Plate stand holding 5 plates"
             >
               {/* Wire rack base */}
               <line x1="20" y1="105" x2="180" y2="105" stroke="currentColor" strokeWidth="3" className="text-muted-foreground/50" />
               <line x1="30" y1="105" x2="30" y2="112" stroke="currentColor" strokeWidth="2.5" className="text-muted-foreground/50" />
               <line x1="170" y1="105" x2="170" y2="112" stroke="currentColor" strokeWidth="2.5" className="text-muted-foreground/50" />
 
-              {/* 5 Thalis (deeper rim / larger diameter) */}
+              {/* 5 Plates (deeper rim / larger diameter) */}
               {[42, 70, 100, 130, 158].map((x) => (
                 <g key={x}>
                   <line x1={x} y1="105" x2={x + 3} y2="15" stroke="currentColor" strokeWidth="2" className="text-muted-foreground/60" />
@@ -136,8 +136,8 @@ function ThaliArrangementSection() {
               ))}
             </svg>
           </div>
-          <h3 className="mt-4 font-semibold text-foreground">Thali Stand</h3>
-          <p className="mt-1 text-sm text-muted-foreground">Sample arrangement: 5 thalis.</p>
+          <h3 className="mt-4 font-semibold text-foreground">Plate Stand</h3>
+          <p className="mt-1 text-sm text-muted-foreground">Sample arrangement: 5 plates.</p>
           <p className="mt-3 text-xs font-medium text-accent-strong">Available sizes: 18 inch, 20 inch, 22 inch, 24 inch</p>
         </div>
       </div>
@@ -441,8 +441,8 @@ function StandardProductLayout({ product }: { product: Product }) {
         </section>
       ) : null}
 
-      {/* THALI ARRANGEMENT SECTION (only on thali-stand) */}
-      {product.layoutVariant === "thali-stand" && <ThaliArrangementSection />}
+      {/* PLATE ARRANGEMENT SECTION (only on thali-stand) */}
+      {product.layoutVariant === "thali-stand" && <PlateArrangementSection />}
 
       {/* 5. SIZES & VARIANTS TABLE */}
       {product.variantsTables && product.variantsTables.length > 0 ? (
@@ -522,7 +522,10 @@ function StandardProductLayout({ product }: { product: Product }) {
               Packaging Details
             </p>
             <p className="mt-0.5 text-base font-semibold text-foreground">
-              Standard Packing: {product.packing}
+              Standard Packing:{" "}
+              {product.slug === "thali-stand"
+                ? "48 pcs and 60 pcs"
+                : product.packing}
             </p>
           </div>
         </section>
@@ -580,9 +583,6 @@ function StandardProductLayout({ product }: { product: Product }) {
 }
 
 export function ProductDetail({ product }: { product: Product }) {
-  // Only Telescopic Channel keeps its 10 Years warranty
-  const showWarranty = product.slug === "channel" && Boolean(product.warranty);
-
   return (
     <main>
       {/* SECTION 3.7: Back to Products button on every product page */}
@@ -660,12 +660,6 @@ export function ProductDetail({ product }: { product: Product }) {
               <span className="inline-block rounded bg-muted px-2.5 py-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
                 {product.category}
               </span>
-              {showWarranty ? (
-                <span className="inline-flex items-center gap-1.5 rounded-md bg-accent/20 px-3 py-1 text-xs font-semibold text-accent-strong">
-                  <ShieldCheck className="size-3.5" />
-                  {product.warranty}
-                </span>
-              ) : null}
             </div>
 
             <h1 className="mt-3 text-3xl font-semibold leading-tight text-foreground md:text-5xl">

@@ -48,3 +48,4 @@ for target in ['index.html', 'src/routes/__root.tsx']:
             links = re.findall(r'<link[^>]*href=["\']([^"\']+)["\'][^>]*>', c)
             print(f"  In {target} scripts:", scripts)
             print(f"  In {target} external links:", [l for l in links if l.startswith('http')])
+

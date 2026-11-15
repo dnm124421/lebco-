@@ -44,7 +44,7 @@ function AboutPage() {
         <div className="grid gap-10 lg:grid-cols-[0.7fr_0.3fr]">
           <div className="space-y-6 text-base leading-8 text-muted-foreground">
             <p>
-              LEBCO offers hinges, drawer systems (tandem box and telescopic channel), kitchen storage fittings (bottle pullouts, pantry units, corner units, baskets, cutlery trays, thali and cup saucer stands and rolling shutters) and anti-skid drawer mats.
+              LEBCO offers hinges, drawer systems (tandem box and telescopic channel), kitchen storage fittings (bottle pullouts, pantry units, corner units, baskets, cutlery trays, plate, cup and saucer stands and rolling shutters) and anti-skid drawer mats.
             </p>
             <p>
               The product catalogue provides trade-accurate dimensions, weight ratings, finishes, and carton packing quantities to help modular kitchen manufacturers, carpenters, and interior designers specify the right hardware with confidence.
@@ -62,7 +62,7 @@ function AboutPage() {
                 {
                   icon: Boxes,
                   title: "Modular kitchens",
-                  desc: "Tandem boxes, pantry units, magic corners, wicker baskets, cutlery trays, thali stands and rolling shutters",
+                  desc: "Tandem boxes, pantry units, magic corners, wicker baskets, cutlery trays, plate, cup and saucer stands and rolling shutters",
                 },
                 {
                   icon: Bed,
@@ -72,7 +72,7 @@ function AboutPage() {
                 {
                   icon: LayoutGrid,
                   title: "Drawer and cabinet organisation",
-                  desc: "Anti-skid mats, cutlery trays and thali stands",
+                  desc: "Anti-skid mats, cutlery trays and plate, cup and saucer stands",
                 },
               ].map((item) => (
                 <li key={item.title} className="flex gap-3">
