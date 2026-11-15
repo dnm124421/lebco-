@@ -12,7 +12,7 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-primary text-primary-foreground">
+    <footer className="content-visibility-auto border-t border-border bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-10 sm:px-6 md:grid-cols-[1.1fr_0.8fr_1.3fr] lg:px-8">
         <div>
           <Link to="/" className="text-2xl font-bold tracking-normal focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground">

@@ -78,21 +78,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      {
-        rel: "preconnect",
-        href: "https://fonts.googleapis.com",
-      },
-      {
-        rel: "preconnect",
-        href: "https://fonts.gstatic.com",
+        rel: "preload",
+        href: "/fonts/source-sans-3.woff2",
+        as: "font",
+        type: "font/woff2",
         crossOrigin: "anonymous",
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap",
+        href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
@@ -121,11 +115,18 @@ function ScrollProgress() {
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / (height || 1)) * 100;
-      setWidth(Math.min(100, Math.max(0, scrolled)));
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+          const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const scrolled = (winScroll / (height || 1)) * 100;
+          setWidth(Math.min(100, Math.max(0, scrolled)));
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -139,8 +140,15 @@ function BackToTop() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setVisible(window.scrollY > 400);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setVisible(window.scrollY > 400);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });

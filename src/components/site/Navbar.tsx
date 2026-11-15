@@ -3,6 +3,7 @@ import { Menu, MessageCircle, X } from "lucide-react";
 import { useState } from "react";
 
 import logo from "@/assets/logo.png";
+import logoWebp from "@/assets/logo.webp";
 import { Button } from "@/components/ui/button";
 import { businessInfo, whatsappHref } from "@/data/products";
 
@@ -20,7 +21,10 @@ export function Navbar() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background" onClick={() => setOpen(false)}>
-          <img src={logo} alt="LEBCO Logo" className="h-12 w-auto" />
+          <picture>
+            <source srcSet={logoWebp} type="image/webp" />
+            <img src={logo} alt="LEBCO Logo" width={52} height={48} className="h-12 w-auto" fetchPriority="high" decoding="async" />
+          </picture>
         </Link>
 
         <nav aria-label="Main navigation" className="hidden items-center gap-7 lg:flex">

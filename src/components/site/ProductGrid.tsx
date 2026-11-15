@@ -4,8 +4,8 @@ import type { Product } from "@/data/products";
 export function ProductGrid({ products }: { products: Product[] }) {
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {products.map((product) => (
-        <ProductCard key={product.slug} product={product} />
+      {products.map((product, index) => (
+        <ProductCard key={product.slug} product={product} index={index} />
       ))}
     </div>
   );

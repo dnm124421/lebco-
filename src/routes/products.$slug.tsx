@@ -2,6 +2,7 @@ import { createFileRoute, notFound, redirect } from "@tanstack/react-router";
 
 import { ProductDetail } from "@/components/site/ProductDetail";
 import { getProduct } from "@/data/products";
+import { productImages } from "@/data/product-images";
 
 export const Route = createFileRoute("/products/$slug")({
   beforeLoad: ({ params }) => {
@@ -32,6 +33,7 @@ export const Route = createFileRoute("/products/$slug")({
         : `${product.name} - Sizes & Specifications | LEBCO`;
 
     const description = product.cardSummary;
+    const responsive = productImages[product.slug];
 
     return {
       meta: [
@@ -42,6 +44,16 @@ export const Route = createFileRoute("/products/$slug")({
         { name: "twitter:card", content: "summary_large_image" },
         { property: "og:description", content: description },
       ],
+      links: responsive?.src
+        ? [
+            {
+              rel: "preload",
+              as: "image",
+              href: responsive.src,
+              fetchPriority: "high",
+            },
+          ]
+        : [],
       scripts: [
         {
           type: "application/ld+json",

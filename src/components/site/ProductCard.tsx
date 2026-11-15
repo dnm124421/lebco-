@@ -4,10 +4,21 @@ import { ArrowRight, MessageCircle, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Product } from "@/data/products";
 import { whatsappHref } from "@/data/products";
+import { productImages } from "@/data/product-images";
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({
+  product,
+  index = 99,
+  priority = false,
+}: {
+  product: Product;
+  index?: number;
+  priority?: boolean;
+}) {
+  const isEager = priority || index < 2;
   // Warranty chip only on the Telescopic Channel card ("10 Years Warranty")
   const showWarranty = product.slug === "channel" && Boolean(product.warranty);
+  const responsive = productImages[product.slug];
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card shadow-catalogue-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-catalogue">
@@ -17,18 +28,40 @@ export function ProductCard({ product }: { product: Product }) {
           params={{ slug: product.slug }}
           className="block bg-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
-          <img
-            src={product.image}
-            alt={product.imageAlt || product.name}
-            className={`aspect-[4/3] w-full ${
-              product.slug === "2d-ss"
-                ? "object-contain bg-white"
-                : product.slug === "rolling-shutter"
-                ? "object-contain bg-[#f8f9fa] p-1"
-                : "object-cover"
-            }`}
-            loading="lazy"
-          />
+          <picture>
+            {responsive?.avifSrcset ? (
+              <source
+                type="image/avif"
+                srcSet={responsive.avifSrcset}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+              />
+            ) : null}
+            {responsive?.webpSrcset ? (
+              <source
+                type="image/webp"
+                srcSet={responsive.webpSrcset}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+              />
+            ) : null}
+            <img
+              src={responsive?.src || product.image}
+              srcSet={responsive?.fallbackSrcset}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+              alt={product.imageAlt || product.name}
+              width={400}
+              height={300}
+              loading={isEager ? "eager" : "lazy"}
+              fetchPriority={isEager ? "high" : "low"}
+              decoding={isEager ? "sync" : "async"}
+              className={`aspect-[4/3] w-full ${
+                product.slug === "2d-ss"
+                  ? "object-contain bg-white"
+                  : product.slug === "rolling-shutter"
+                  ? "object-contain bg-[#f8f9fa] p-1"
+                  : "object-cover"
+              }`}
+            />
+          </picture>
         </Link>
         {showWarranty ? (
           <div className="absolute top-3 right-3 rounded-md bg-accent px-2.5 py-1 text-xs font-semibold text-accent-foreground shadow-sm flex items-center gap-1">

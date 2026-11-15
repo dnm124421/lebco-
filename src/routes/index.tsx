@@ -24,6 +24,14 @@ export const Route = createFileRoute("/")({
           "Explore LEBCO’s range of hinges, telescopic channels, tandem boxes, cutlery trays, pullouts, pantry units, magic corners, rolling shutters and drawer mats. Direct enquiry via WhatsApp.",
       },
     ],
+    links: [
+      {
+        rel: "preload",
+        as: "image",
+        href: heroImage,
+        fetchPriority: "high",
+      },
+    ],
   }),
   component: Index,
 });
@@ -53,7 +61,16 @@ function Index() {
             </div>
           </div>
           <div className="flex items-center justify-center overflow-hidden rounded-lg border border-border bg-card p-6 shadow-catalogue sm:p-10">
-            <img src={heroImage} alt="LEBCO Hardware Solutions" className="max-h-80 w-auto object-contain" />
+            <img
+              src={heroImage}
+              alt="LEBCO Hardware Solutions"
+              width={320}
+              height={320}
+              loading="eager"
+              fetchPriority="high"
+              decoding="sync"
+              className="max-h-80 w-auto object-contain"
+            />
           </div>
         </div>
 

@@ -1,0 +1,138 @@
+
+LEBCO Website Speed Optimisation Prompt
+For Antigravity IDE | Site: https://lebco.netlify.app | Focus: mobile loading speed and images
+0. PROBLEM AND GOAL
+The LEBCO website (https://lebco.netlify.app, React/Vite style build hosted on Netlify) loads slowly on mobile, and the product images are the main suspect. Make the site fast on a mid-range phone with a slow 4G connection without changing any content, design, product data, spacing, colours, text, routes or behaviour.
+Targets (Lighthouse, Mobile preset, simulated Slow 4G, 4x CPU slowdown, run against the production build or the deployed URL):
+Metric
+Target
+Performance score (Home, Products, any product page)
+90 or higher
+Largest Contentful Paint (LCP)
+2.5 s or less
+First Contentful Paint (FCP)
+1.8 s or less
+Total Blocking Time (TBT)
+200 ms or less
+Cumulative Layout Shift (CLS)
+0.1 or less
+Home page total transfer size (first load)
+1 MB or less (stretch goal: 700 KB)
+Initial JavaScript (gzip/brotli)
+150 KB or less
+1. RULES
+Do not change wording, specifications, prices, product order, filters, WhatsApp links, phone numbers, SEO text or the visual design. The site must look the same to a visitor, only faster.
+Do not delete the original high-resolution images. Move originals to a folder that is not shipped in the build (for example /original-images/ outside public and src/assets) and generate optimised copies.
+Measure first, change second, measure again. Keep a before/after table (section 10).
+Work in phases (sections 2 to 9). After each phase run the build, check the site in a mobile viewport (360 px wide) and confirm nothing broke before moving on.
+Prefer build-time optimisation (scripts or Vite plugins) over runtime tricks. Do not add heavy libraries to solve a small problem.
+Every image must keep a meaningful alt text.
+2. PHASE 1: BASELINE AUDIT (do this first, change nothing yet)
+Install dependencies and run a production build (npm run build). Record the size of every file in the build output folder (dist), sorted largest first.
+Run Lighthouse (mobile) on the Home page, the Products page and three product pages (Slim Tandem Box, PVC Cutlery Tray, PVC Rolling Shutter). If you cannot run Lighthouse against the deployed URL, run it against npm run preview. Record Performance, LCP, FCP, TBT, CLS, total transfer size and number of requests for each.
+List every image used on the site with: file name, format, pixel dimensions, file size in KB, where it is used, and the size it is actually displayed at on a 360 px and a 1280 px screen.
+Run a bundle analysis (for example rollup-plugin-visualizer) and list the five biggest JavaScript dependencies.
+List all fonts loaded (family, weights, format, size) and all third-party scripts or embeds.
+Save these numbers. They go into the final report as the “before” values.
+Expected findings to confirm or reject: very large JPG/PNG product photos (often 1 MB or more each), all 13 product images loading on the Home page, JS loaded for every route at once, unoptimised fonts, no cache headers.
+3. PHASE 2: IMAGES (highest priority)
+3.1 Image budget
+Image role
+Max display width
+Ship widths (srcset)
+Target size per file
+Product card image (Home, Products)
+about 400 px
+320, 480, 640
+25 to 50 KB
+Product detail hero image
+about 560 px
+480, 720, 1080
+50 to 90 KB
+Home hero / banner image (if any)
+full width
+480, 768, 1080, 1440
+80 to 150 KB
+Thumbnails, gallery, related-product cards
+about 300 px
+240, 400
+15 to 30 KB
+Logo, icons
+as displayed
+SVG preferred
+under 10 KB
+No image served to a phone may be larger than twice its displayed CSS width (retina allowance). Nothing wider than 1440 px should ever ship.
+3.2 Conversion
+Convert all raster images to WebP (quality about 75) and, where the toolchain allows, also AVIF (quality about 50). Keep the original JPG as the last fallback inside a <picture> element.
+Resize to the widths in the table above and generate a srcset with correct sizes attributes that match the real layout (for example (max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px for a card in a 3-column grid).
+Strip metadata (EXIF, colour profiles that are not needed).
+Use sharp in a script such as scripts/optimize-images.mjs that runs before the build, or vite-imagetools if the project already uses Vite. If images live in the public folder, an alternative is the Netlify Image CDN (/.netlify/images?url=/path.jpg&w=640&fm=webp&q=75). Choose one approach and use it consistently.
+Convert PNG screenshots or flat graphics to WebP or SVG. Do not leave any PNG larger than 100 KB on a page.
+Replace any image that is only decorative and heavy by CSS if possible.
+3.3 Loading behaviour
+Give every <img> explicit width and height attributes (or CSS aspect-ratio) so the layout does not jump (CLS).
+Add loading="lazy" and decoding="async" to every image that is below the fold: product cards beyond the first row, related products, footer images.
+The single Largest Contentful Paint image of each page (Home hero, product detail hero) must not be lazy. Use fetchpriority="high" and loading="eager" on it, and add a <link rel="preload" as="image" imagesrcset=... imagesizes=...> for it where possible.
+On the Home page and the Products page, only the first row of cards (about the first 3 on desktop, first 2 on mobile) loads eagerly. All other cards lazy-load.
+Add a light placeholder (a flat background colour or a tiny blurred preview) while images load. The card must keep its final size.
+On product detail pages, do not load the images of other products except the three Related Products, and make those lazy.
+4. PHASE 3: JAVASCRIPT AND ROUTING
+Route-based code splitting. Load each route (Home, Products, Product Detail, About, Contact) with React.lazy + Suspense (or the router’s lazy option). Wrap with a small fallback that keeps the page layout stable.
+Do not import all product data, images or product-specific components into the Home bundle. Home should only need the card data and card images it shows.
+Remove unused dependencies and dead code. Replace large libraries with small ones or native code where the usage is small (for example date libraries, full icon packs, animation libraries). Import icons one by one (named imports from the icon library) so tree-shaking works.
+Vite build settings: build.target modern (es2020 or higher), CSS code splitting on, build.minify on, remove console.log and debugger in production (esbuild.drop), and set build.rollupOptions.output.manualChunks only if analysis shows it helps (for example one vendor chunk for React). Do not over-split into many tiny chunks.
+Avoid long tasks on load: no heavy loops, no large JSON parsed on the main thread at startup, no useEffect chains that block the first render. Defer non-critical work (analytics, floating widgets, animations) until after first paint using requestIdleCallback (with a timeout fallback).
+Product filtering (category chips) must stay instant. Use memoisation (useMemo) for the filtered list and stable keys. Do not re-create the image elements on every filter click.
+Prefetch on intent: when the visitor hovers or touches a “View Details” button or the card comes into view, prefetch that route chunk (import() call) so navigation feels instant. Do not prefetch images aggressively on mobile data.
+5. PHASE 4: FONTS AND CSS
+Self-host the fonts as WOFF2, subset to Latin (and only the weights actually used, for example 400, 600, 700). Remove unused weights and italics.
+Use font-display: swap. Preload only the one or two font files used above the fold (<link rel="preload" as="font" type="font/woff2" crossorigin>). If fonts come from Google Fonts, replace them with self-hosted files and remove the extra preconnect and stylesheet request.
+Add a good system font fallback stack with matching metrics so text does not jump when the web font loads.
+CSS: make sure unused CSS is purged (for example Tailwind content paths are correct), no giant CSS files, no @import chains. Inline only the small critical CSS if the build tool supports it safely; otherwise skip.
+Mobile rendering cost: remove or simplify very heavy effects on small screens (large box-shadow, backdrop-filter blur, big filter, animated gradients, parallax). Respect prefers-reduced-motion. Do not animate width, height, top or left; use transform and opacity only.
+6. PHASE 5: HTML SHELL, FIRST PAINT AND SEO SAFETY
+The first HTML response must contain meaningful content or at least a lightweight, styled shell so the visitor does not stare at a blank screen while JavaScript loads. Add a small inline loading state in index.html (logo and background colour only).
+Consider pre-rendering (static HTML generation) for Home, Products, About, Contact and each product page, so the content appears before JavaScript runs (use a Vite-friendly option such as vite-react-ssg, vite-plugin-prerender or similar, only if it can be added without rewriting the app). If it is too risky for the current code, skip it and say so in the report.
+Keep <title>, meta description, canonical and Open Graph tags correct on every route.
+<script type="module"> stays at the end or uses defer. No render-blocking scripts in <head>.
+Add <meta name="viewport" content="width=device-width, initial-scale=1"> if missing, and <link rel="preconnect"> only for origins that are really used (do not add unused preconnects).
+Remove any third-party script or widget that is not needed (chat widgets, tracking pixels, extra font or icon CDNs). If analytics is needed, load it after the page is interactive.
+7. PHASE 6: NETLIFY CONFIGURATION (caching and delivery)
+Add a _headers file in the folder that is copied to the build output (usually public/_headers) or a [[headers]] block in netlify.toml:
+Hashed build files (/assets/*): Cache-Control: public, max-age=31536000, immutable
+Images and fonts: long cache (max-age=31536000, immutable) when file names are hashed, otherwise max-age=604800
+index.html and other HTML: Cache-Control: public, max-age=0, must-revalidate
+Keep the existing SPA fallback redirect (/* /index.html 200) and the product redirects already created for removed products.
+Netlify already serves Brotli/gzip. Confirm compression is active on JS, CSS, HTML, SVG and JSON responses.
+Turn on Netlify’s built-in asset optimisation only if it does not conflict with the build tool; otherwise rely on the Vite build.
+Add X-Content-Type-Options: nosniff and keep other security headers if they exist. Do not add any header that breaks WhatsApp links or the contact page.
+8. PHASE 7: OPTIONAL EXTRAS (only if time allows and nothing breaks)
+A simple service worker (for example vite-plugin-pwa with runtime caching of images and fonts only, no offline page requirement) to make repeat visits instant. Skip if it complicates deployments.
+Use content-visibility: auto with contain-intrinsic-size on long sections below the fold (for example the footer and Related Products) to reduce rendering work.
+Reduce the number of products rendered at once on the Products page only if the page is still slow after all the above (for example “Load more”). Do not change this unless the data shows it is needed.
+9. PHASE 8: TESTING
+Test at 360 px, 412 px, 768 px and 1280 px. Compare screenshots before and after: layouts, image sharpness (images must look sharp on a phone, not blurry), colours and text must be identical.
+Throttle the network to Slow 4G in DevTools, open Home, Products and three product pages. Confirm images load progressively, nothing jumps, and the page becomes usable within about 3 seconds.
+Check the Network tab: no image larger than its budget in section 3.1, no failed requests, no duplicate downloads of the same image, all hashed assets have long cache headers, HTML is not cached.
+Verify functionality: category filter chips, View Details, Back to Products button, Enquire Now (WhatsApp prefilled text), Call button, About and Contact pages, redirects for removed products.
+Re-run Lighthouse (mobile) on the same five pages as in the baseline and make sure every target in section 0 is met. If a target is missed, explain why and what would be needed.
+10. FINAL REPORT (required)
+Send me:
+A before/after table for each of the five tested pages: Performance score, LCP, FCP, TBT, CLS, total transfer size, number of requests.
+An image table: file name, before (format, pixels, KB), after (format, pixels, KB), saving in percent. Plus the total image weight before and after.
+The top five JavaScript dependencies before and after, and the initial JS size before and after.
+The list of files created, edited and deleted, and the new npm scripts (for example npm run optimize:images) with a short explanation of how I should add future images (so I do not upload a 3 MB photo again).
+Any change you decided not to make and why (for example pre-rendering skipped), and anything I must do manually (for example Netlify settings).
+A short “How to keep the site fast” checklist for future updates (image sizes, formats, lazy loading rules).
+11. QUICK WINS CHECKLIST (the AI should confirm each one)
+Every image converted to WebP (and AVIF if possible) and resized to its display size
+srcset and sizes added to product images
+Hero image preloaded, all other images lazy-loaded
+width and height set on all images, no layout shift
+Route-based code splitting active
+Unused libraries removed, icons imported individually
+Fonts self-hosted, WOFF2, subset, font-display: swap
+Long-term cache headers on hashed assets, no-cache on HTML
+No unnecessary third-party scripts
+Heavy mobile effects (blur, big shadows, animations) simplified
+Lighthouse mobile score 90 or higher on all key pages

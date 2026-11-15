@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { ProductGrid } from "@/components/site/ProductGrid";
@@ -64,10 +64,11 @@ function ProductsPage() {
     }
   };
 
-  const filteredProducts =
-    activeCategory === "All"
+  const filteredProducts = useMemo(() => {
+    return activeCategory === "All"
       ? products
       : products.filter((p) => p.category === activeCategory);
+  }, [activeCategory]);
 
   return (
     <main>

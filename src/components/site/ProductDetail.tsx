@@ -17,6 +17,7 @@ import { SpecTable } from "@/components/site/SpecTable";
 import { Button } from "@/components/ui/button";
 import type { Product } from "@/data/products";
 import { businessInfo, getProduct, whatsappHref } from "@/data/products";
+import { productImages } from "@/data/product-images";
 
 function DetailList({ title, items }: { title: string; items?: string[] }) {
   if (!items || items.length === 0) return null;
@@ -239,7 +240,7 @@ function PvcCutleryLayout({ product }: { product: Product }) {
 
       {/* Related Products */}
       {relatedProducts.length > 0 && (
-        <section className="pb-12 sm:pb-16">
+        <section className="content-visibility-auto pb-12 sm:pb-16">
           <div className="mb-6 flex items-center justify-between">
             <h2 className="text-2xl font-semibold text-foreground">Related Products</h2>
             <Button asChild variant="outline" size="sm">
@@ -250,7 +251,7 @@ function PvcCutleryLayout({ product }: { product: Product }) {
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {relatedProducts.slice(0, 3).map((rel) => (
-              <ProductCard key={rel.slug} product={rel} />
+              <ProductCard key={rel.slug} product={rel} index={99} />
             ))}
           </div>
         </section>
@@ -346,7 +347,7 @@ function HingeLayout({ product }: { product: Product }) {
 
       {/* Related Products */}
       {relatedProducts.length > 0 && (
-        <section className="pb-12 sm:pb-16">
+        <section className="content-visibility-auto pb-12 sm:pb-16">
           <div className="mb-6 flex items-center justify-between">
             <h2 className="text-2xl font-semibold text-foreground">Related Products</h2>
             <Button asChild variant="outline" size="sm">
@@ -357,7 +358,7 @@ function HingeLayout({ product }: { product: Product }) {
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {relatedProducts.slice(0, 3).map((rel) => (
-              <ProductCard key={rel.slug} product={rel} />
+              <ProductCard key={rel.slug} product={rel} index={99} />
             ))}
           </div>
         </section>
@@ -558,7 +559,7 @@ function StandardProductLayout({ product }: { product: Product }) {
 
       {/* 8. RELATED PRODUCTS */}
       {relatedProducts.length > 0 ? (
-        <section className="pb-12 sm:pb-16">
+        <section className="content-visibility-auto pb-12 sm:pb-16">
           <div className="mb-6 flex items-center justify-between">
             <h2 className="text-2xl font-semibold text-foreground">Related Products</h2>
             <Button asChild variant="outline" size="sm">
@@ -569,7 +570,7 @@ function StandardProductLayout({ product }: { product: Product }) {
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {relatedProducts.slice(0, 3).map((rel) => (
-              <ProductCard key={rel.slug} product={rel} />
+              <ProductCard key={rel.slug} product={rel} index={99} />
             ))}
           </div>
         </section>
@@ -592,23 +593,59 @@ export function ProductDetail({ product }: { product: Product }) {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8 lg:py-14">
           <div className="space-y-4">
             <div className="overflow-hidden rounded-lg border border-border bg-card shadow-catalogue-sm">
-              <img
-                src={product.image}
-                alt={product.imageAlt || product.name}
-                className={`aspect-[4/3] w-full ${
-                  product.slug === "2d-ss"
-                    ? "object-contain bg-white"
-                    : product.slug === "rolling-shutter"
-                    ? "object-contain bg-[#f8f9fa] p-2"
-                    : "object-cover"
-                }`}
-              />
+              {(() => {
+                const responsive = productImages[product.slug];
+                return (
+                  <picture>
+                    {responsive?.avifSrcset ? (
+                      <source
+                        type="image/avif"
+                        srcSet={responsive.avifSrcset}
+                        sizes="(max-width: 1024px) 100vw, 560px"
+                      />
+                    ) : null}
+                    {responsive?.webpSrcset ? (
+                      <source
+                        type="image/webp"
+                        srcSet={responsive.webpSrcset}
+                        sizes="(max-width: 1024px) 100vw, 560px"
+                      />
+                    ) : null}
+                    <img
+                      src={responsive?.src || product.image}
+                      srcSet={responsive?.fallbackSrcset}
+                      sizes="(max-width: 1024px) 100vw, 560px"
+                      alt={product.imageAlt || product.name}
+                      width={560}
+                      height={420}
+                      loading="eager"
+                      fetchPriority="high"
+                      decoding="sync"
+                      className={`aspect-[4/3] w-full ${
+                        product.slug === "2d-ss"
+                          ? "object-contain bg-white"
+                          : product.slug === "rolling-shutter"
+                          ? "object-contain bg-[#f8f9fa] p-2"
+                          : "object-cover"
+                      }`}
+                    />
+                  </picture>
+                );
+              })()}
             </div>
             {product.gallery && product.gallery.length > 0 ? (
               <div className="grid grid-cols-2 gap-3">
                 {product.gallery.map((item) => (
                   <div key={item.src} className="overflow-hidden rounded-md border border-border bg-card">
-                    <img src={item.src} alt={item.alt} className="aspect-[4/3] w-full object-cover" />
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      width={280}
+                      height={210}
+                      loading="lazy"
+                      decoding="async"
+                      className="aspect-[4/3] w-full object-cover"
+                    />
                     {item.caption ? (
                       <p className="p-2 text-center text-xs font-semibold text-foreground">{item.caption}</p>
                     ) : null}
