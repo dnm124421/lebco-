@@ -322,7 +322,7 @@ export const products: Product[] = [
     cardSummary:
       "Soft-close, full extension tandem drawer system. Up to 45 kg. 16 inch to 24 inch depths.",
     description:
-      "Slim Tandem Box is a soft-close, full extension tandem drawer system rated up to 45 kg. It comes in three heights (88, 116 and 168 mm) for 16 inch to 24 inch depths, with clip-on installation and 2 mm up/down panel adjustment for easy fitting and alignment.",
+      "Slim Tandem Box is a soft-close, full extension tandem drawer system rated up to 45 kg. It comes in three heights (88, 120 and 168 mm) for 16 inch to 24 inch depths, with clip-on installation and 2 mm up/down panel adjustment for easy fitting and alignment.",
     features: [
       "Full extension slides",
       "High load capacity up to 45 kg",
@@ -353,13 +353,13 @@ export const products: Product[] = [
         headers: ["Height Code", "Height", "Packing"],
         rows: [
           ["Code 4", "88 mm", "6 sets/box"],
-          ["Code 6", "116 mm", "6 sets/box"],
+          ["Code 6", "120 mm", "6 sets/box"],
           ["Code 8", "168 mm", "6 sets/box"],
         ],
       },
       {
         title: "Availability Matrix (Depth x Height)",
-        headers: ["Depth", "88 mm (Code 4)", "116 mm (Code 6)", "168 mm (Code 8)"],
+        headers: ["Depth", "88 mm (Code 4)", "120 mm (Code 6)", "168 mm (Code 8)"],
         rows: [
           ['16" (400 mm)', true, true, true],
           ['18" (450 mm)', true, true, true],
@@ -480,13 +480,13 @@ export const products: Product[] = [
       { src: pulloutWireImage, alt: "LEBCO Bottle Pullout Flatline Basket Variant", caption: "Flatline Basket Variant" },
     ],
     cardSummary:
-      "Glass or flatline bottle pullout. 2 and 3 layer. Cabinet widths 200, 250 and 300 mm.",
+      "Glass or flatline bottle pullout. 2 and 3 layer. Cabinet widths 150, 200, 250 and 300 mm.",
     description:
-      "Bottle Pullout is a pullout organiser for base cabinets, available in glass and flatline basket styles. It comes in 2-layer and 3-layer configurations for 200, 250 and 300 mm cabinet widths, with 18.5 inch long baskets, 4.5 inch wide for 200 mm, 6 inch wide for 250 mm and 8 inch wide for 300 mm cabinets, so bottles, jars and packs stay within easy reach.",
+      "Bottle Pullout is a pullout organiser for base cabinets, available in glass and flatline basket styles. It comes in 2-layer and 3-layer configurations for 150, 200, 250 and 300 mm cabinet widths, with 18.5 inch long baskets, 3 inch wide for 150 mm, 4.5 inch wide for 200 mm, 6 inch wide for 250 mm and 8 inch wide for 300 mm cabinets, so bottles, jars and packs stay within easy reach.",
     highlights: [
       { label: "Styles", value: "Glass / Flatline" },
       { label: "Layers", value: "2 & 3 Layer Configurations" },
-      { label: "Cabinet Widths", value: "200, 250, 300 mm" },
+      { label: "Cabinet Widths", value: "150, 200, 250, 300 mm" },
     ],
     specifications: [
       {
@@ -494,7 +494,8 @@ export const products: Product[] = [
         rows: [
           { label: "Styles", value: "Glass / Flatline" },
           { label: "Layers Available", value: "2 Layer and 3 Layer" },
-          { label: "Cabinet Widths", value: "200 mm, 250 mm, 300 mm" },
+          { label: "Cabinet Widths", value: "150 mm, 200 mm, 250 mm, 300 mm" },
+          { label: "150 mm Basket Size", value: '18.5" L x 3" W' },
           { label: "200 mm Basket Size", value: '18.5" L x 4.5" W' },
           { label: "250 mm Basket Size", value: '18.5" L x 6" W' },
           { label: "300 mm Basket Size", value: '18.5" L x 8" W' },
@@ -506,6 +507,7 @@ export const products: Product[] = [
         title: "2 Layer Dimensions (mm)",
         headers: ["Cabinet T", "Width", "Depth", "Height"],
         rows: [
+          ["150 mm", "114 mm", "500 mm", "500 mm"],
           ["200 mm", "164 mm", "500 mm", "500 mm"],
           ["250 mm", "214 mm", "500 mm", "500 mm"],
           ["300 mm", "264 mm", "500 mm", "500 mm"],
@@ -515,6 +517,7 @@ export const products: Product[] = [
         title: "3 Layer Dimensions (mm)",
         headers: ["Cabinet T", "Width", "Depth", "Height"],
         rows: [
+          ["150 mm", "114 mm", "500 mm", "600 mm"],
           ["200 mm", "164 mm", "500 mm", "600 mm"],
           ["250 mm", "214 mm", "500 mm", "600 mm"],
           ["300 mm", "264 mm", "500 mm", "600 mm"],

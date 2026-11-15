@@ -161,15 +161,21 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 @layer base {
-  * {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
     border-color: var(--color-border);
   }
 
   body {
     min-width: 0;
+    max-width: 100vw;
     overflow-x: hidden;
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -179,7 +185,9 @@ html {
     font-feature-settings: normal;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    font-size: 1rem;
     line-height: 1.5;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
   button,
@@ -192,9 +200,17 @@ html {
     font: inherit;
   }
 
+  button,
+  .btn,
+  a[role="button"] {
+    word-break: keep-all;
+    overflow-wrap: normal;
+  }
+
   table {
     border-collapse: collapse;
     font-size: clamp(0.875rem, 2.5vw, 0.9375rem);
+    width: 100%;
   }
 
   th,
@@ -207,6 +223,7 @@ html {
   video,
   canvas {
     max-width: 100%;
+    height: auto;
   }
 }
 
@@ -327,7 +344,7 @@ article.group img.aspect-\[4\/3\] {
 
 #back-to-top {
   position: fixed;
-  bottom: 5.5rem;
+  bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
   right: 1.25rem;
   z-index: 45;
   opacity: 0;

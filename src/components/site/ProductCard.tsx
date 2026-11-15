@@ -62,7 +62,7 @@ export function ProductCard({
           </picture>
         </Link>
       </div>
-      <div className="flex flex-1 flex-col p-5">
+      <div className="flex flex-1 flex-col p-4 min-[390px]:p-5">
         <div className="mb-2">
           <span className="inline-block rounded bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground uppercase tracking-wider">
             {product.category}
@@ -72,13 +72,13 @@ export function ProductCard({
         <p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">
           {product.cardSummary}
         </p>
-        <div className="mt-5 grid gap-2 sm:grid-cols-2">
-          <Button asChild variant="outline" size="sm">
+        <div className="mt-auto pt-4 grid grid-cols-1 min-[360px]:grid-cols-2 gap-2 sm:grid-cols-2">
+          <Button asChild variant="outline" size="sm" className="w-full min-h-[44px]">
             <Link to="/products/$slug" params={{ slug: product.slug }}>
               View Details <ArrowRight aria-hidden="true" />
             </Link>
           </Button>
-          <Button asChild size="sm">
+          <Button asChild size="sm" className="w-full min-h-[44px]">
             <a href={whatsappHref(product.name)} target="_blank" rel="noreferrer">
               <MessageCircle aria-hidden="true" /> Enquire Now
             </a>
