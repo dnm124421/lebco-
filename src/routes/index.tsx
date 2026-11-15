@@ -1,10 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Boxes, CheckCircle, MessageCircle, Package, ShieldCheck, Sparkles, Zap } from "lucide-react";
+import { ArrowRight, Boxes, CheckCircle, Package, ShieldCheck, Sparkles, Zap } from "lucide-react";
 
 import { ProductGrid } from "@/components/site/ProductGrid";
 import { SectionHeader } from "@/components/site/SectionHeader";
 import { Button } from "@/components/ui/button";
-import { businessInfo, featuredProducts, heroImage, products, whatsappHref } from "@/data/products";
+import { businessInfo, heroImage, products } from "@/data/products";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -98,73 +98,25 @@ function Index() {
         <ProductGrid products={products} />
       </section>
 
-      <section className="border-y border-border bg-catalogue-panel">
+      <section className="border-t border-border bg-catalogue-panel">
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
           <SectionHeader
-            title="Featured Products"
-            description="Selected LEBCO hardware products with detailed specifications."
+            title="Why LEBCO"
+            description="Practical hardware choices for modular kitchens, furniture and everyday utility needs."
           />
-          <div className="mt-9 space-y-8">
-            {featuredProducts.map((product, index) => (
-              <article key={product.slug} className="grid gap-6 rounded-lg border border-border bg-card p-5 shadow-catalogue-sm md:grid-cols-2 md:items-center md:p-6">
-                <div className={index % 2 === 1 ? "md:order-2" : undefined}>
-                  <img
-                    src={product.image}
-                    alt={product.imageAlt || product.name}
-                    className={`aspect-[4/3] w-full rounded-md border border-border ${
-                      product.slug === "2d-ss"
-                        ? "object-contain bg-white"
-                        : product.slug === "rolling-shutter"
-                        ? "object-contain bg-[#f8f9fa] p-2"
-                        : "object-cover"
-                    }`}
-                    loading="lazy"
-                  />
-                </div>
-                <div>
-                  <div className="mb-2 flex items-center gap-2">
-                    <span className="inline-block rounded bg-muted px-2 py-0.5 text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                      {product.category}
-                    </span>
-                  </div>
-                  <h3 className="text-2xl font-semibold text-foreground">{product.name}</h3>
-                  <p className="mt-3 text-base leading-7 text-muted-foreground">{product.cardSummary}</p>
-                  <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                    <Button asChild variant="outline">
-                      <Link to="/products/$slug" params={{ slug: product.slug }}>
-                        View Details <ArrowRight aria-hidden="true" />
-                      </Link>
-                    </Button>
-                    <Button asChild>
-                      <a href={whatsappHref(product.name)} target="_blank" rel="noreferrer">
-                        <MessageCircle aria-hidden="true" /> Enquire Now
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-              </article>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { icon: Sparkles, text: "Soft-close drawer and hinge systems" },
+              { icon: Boxes, text: "Exact sizes and dimensions listed for each product" },
+              { icon: Package, text: "Clear box packing quantities for bulk orders" },
+              { icon: CheckCircle, text: "Enquire in one tap on WhatsApp" },
+            ].map((item) => (
+              <div key={item.text} className="flex items-center gap-3.5 rounded-lg border border-border bg-card p-5 shadow-catalogue-sm">
+                <item.icon aria-hidden="true" className="size-5 shrink-0 text-accent-strong" />
+                <p className="font-medium text-foreground">{item.text}</p>
+              </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
-        <SectionHeader
-          title="Why LEBCO"
-          description="Practical hardware choices for modular kitchens, furniture and everyday utility needs."
-        />
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            { icon: Sparkles, text: "Soft-close drawer and hinge systems" },
-            { icon: Boxes, text: "Exact sizes and dimensions listed for each product" },
-            { icon: Package, text: "Clear box packing quantities for bulk orders" },
-            { icon: CheckCircle, text: "Enquire in one tap on WhatsApp" },
-          ].map((item) => (
-            <div key={item.text} className="flex items-center gap-3.5 rounded-lg border border-border bg-card p-5 shadow-catalogue-sm">
-              <item.icon aria-hidden="true" className="size-5 shrink-0 text-accent-strong" />
-              <p className="font-medium text-foreground">{item.text}</p>
-            </div>
-          ))}
         </div>
       </section>
     </main>
